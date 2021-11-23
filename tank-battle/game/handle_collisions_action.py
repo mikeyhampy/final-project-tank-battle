@@ -11,8 +11,8 @@ class HandleCollisionsAction(Action):
         super().__init__()
         self._physics_service = physics_service
         self._audio_service = audio_service
-        self.num_paddle_col = 0
-        self.num_brick_col = 0
+        self.num_tank_col = 0
+        self.num_wall_col = 0
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -20,23 +20,24 @@ class HandleCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        # check ball and paddle collisions
-        ball = cast["balls"][0]
-        paddle = cast["paddle"][0]
-        bricks = cast["bricks"]
-        if self._physics_service.is_collision(ball, paddle):
-            if self.num_paddle_col > 0:
-                self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-            self._audio_service.play_sound(constants.SOUND_BOUNCE)
-            ball._velocity._y = ball._velocity._y * -1
-            self.num_paddle_col = 1
+        # check ball and tank collisions
+        balls = cast["balls"]
+        tank = cast["tank"][0]
+        wall = cast["walls"][0]
+        for ball in balls:
+            if self._physics_service.is_collision(ball, tank):
+                if self.num_tank_col > 0:
+                    self._audio_service.stop_audio(constants.SOUND_BOUNCE)
+                self._audio_service.play_sound(constants.SOUND_BOUNCE)
+                ball._velocity._y = ball._velocity._y * -1
+                self.num_tank_col = 1
 
         # check ball and brick collisions
-        for brick in bricks:
-            if self._physics_service.is_collision(ball, brick):
+        for ball in balls:
+            if self._physics_service.is_collision(ball, wall):
                 if self.num_brick_col > 0:
                     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
                 self._audio_service.play_sound(constants.SOUND_BOUNCE)
                 ball._velocity._y = ball._velocity._y * -1
-                bricks.remove(brick)
+                #balls.remove(ball)
                 self.num_brick_col = 1

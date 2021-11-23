@@ -8,17 +8,17 @@ class HandleOffScreenAction(Action):
 
     def execute(self, cast):
         #get ball data
-        ball = cast["balls"][0]
-        x = ball._position.get_x()
-        y = ball._position.get_y()
+        # ball = cast["balls"][0]
+        # x = ball._position.get_x()
+        # y = ball._position.get_y()
 
         #bounces horizontal
-        if( x <= 0 or x >= constants.MAX_X - constants.BALL_WIDTH):
-            ball._velocity._x = ball._velocity._x * -1
+        # if( x <= 0 or x >= constants.MAX_X - constants.BALL_WIDTH):
+        #     ball._velocity._x = ball._velocity._x * -1
 
         #bounces vertical
-        if(y <= 0):
-            ball._velocity._y = ball._velocity._y * -1
+        # if(y <= 0 or y >= constants.MAX_X - constants.BALL_HEIGHT):
+        #     ball._velocity._y = ball._velocity._y * -1
 
         #get tank data
         tank = cast["tank"][0]

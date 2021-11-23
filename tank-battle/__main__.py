@@ -14,7 +14,7 @@ from game.physics_service import PhysicsService
 from game.audio_service import AudioService
 
 # TODO: Add imports similar to the following when you create these classes
-from game.brick import Brick
+from game.wall import Wall
 from game.ball import Ball
 from game.tank import Tank
 from game.control_actors_action import ControlActorsAction
@@ -34,17 +34,17 @@ def main():
         # create the cast {key: tag, value: list}
         cast = {}
 
-        cast["bricks"] = []
-        # TODO: Create bricks here and add them to the list
-        brick = Brick()
-        brick.set_bricks()
-        cast["bricks"] = brick.get_bricks()
+        cast["walls"] = []
+        # TODO: Create walls here and add them to the list
+        wall = Wall()
+        wall.set_walls()
+        cast["walls"] = wall.get_walls()
         
         cast["balls"] = []
         # TODO: Create a ball here and add it to the list
-        ball = Ball()
-        ball.set_ball()
-        cast["balls"] = ball.get_ball()
+        # ball = Ball()
+        # ball.set_ball()
+        # cast["balls"] = ball.get_ball()
 
         cast["tank"] = []
         # TODO: Create a tank here and add it to the list
@@ -83,7 +83,7 @@ def main():
 
         # Start the game run once
         if open_window_loop == 0:
-            output_service.open_window("Batter")
+            output_service.open_window("Tank Batter")
             audio_service.start_audio()
             open_window_loop = 1
         
@@ -96,9 +96,9 @@ def main():
 
         #stop audio
         audio_service.stop_audio(check_end._sound)
-        if handle_collisions_action.num_brick_col > 0:
+        if handle_collisions_action.num_wall_col > 0:
             audio_service.stop_audio(constants.SOUND_BOUNCE)
-        if handle_collisions_action.num_paddle_col > 0:
+        if handle_collisions_action.num_tank_col > 0:
             audio_service.stop_audio(constants.SOUND_BOUNCE)
         output_service.flush_buffer()
 
