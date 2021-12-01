@@ -29,6 +29,7 @@ class Actor:
         self._width = 0
         self._height = 0
         self._image = ""
+        self._angle = 0
 
     def get_width(self):
         return self._width

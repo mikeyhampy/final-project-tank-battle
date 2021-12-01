@@ -68,7 +68,7 @@ class OutputService:
         texture = self._textures[image]
         raylibpy.draw_texture(texture, x, y, raylibpy.WHITE)
 
-    def draw_actor(self, actor):
+    def draw_actor(self, actor, if_tank):
         """Renders the given actor's text on the screen.
 
         Args:
@@ -81,6 +81,9 @@ class OutputService:
         width = actor.get_width()
         height = actor.get_height()
 
+        vc = raylibpy.Vector2(width / 2, 0)
+        tangle = raylibpy.Rectangle(x, y, width, height)
+
         if actor.has_image():
             image = actor.get_image()
             self.draw_image(x, y, image)
@@ -89,9 +92,12 @@ class OutputService:
             text = actor.get_text()
             self.draw_text(x, y, text, self._color_number)
         elif width > 0 and height > 0:
-            self.draw_box(x, y, width, height)
+            if if_tank:
+                raylibpy.draw_rectangle_pro(tangle, vc, actor._angle, raylibpy.RED)
+            else:
+                self.draw_box(x, y, width, height)
         
-    def draw_actors(self, actors, color_number):
+    def draw_actors(self, actors, color_number, if_tank):
         """Renders the given list of actors on the screen.
 
         Args:
@@ -100,7 +106,7 @@ class OutputService:
         """ 
         self._color_number = color_number
         for actor in actors:
-            self.draw_actor(actor)
+            self.draw_actor(actor, if_tank)
     
     def flush_buffer(self):
         """Renders the screen.

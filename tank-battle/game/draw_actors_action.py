@@ -26,9 +26,14 @@ class DrawActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
+        choice = False
         self._output_service.clear_screen()
-        for group in cast.values():
-            self._output_service.draw_actors(group, self._color_number)
+        for key, group in cast.items():
+            if key == "tank":
+                choice = True
+            else:
+                choice = False
+            self._output_service.draw_actors(group, self._color_number, choice)
         self._output_service.flush_buffer()
 
     def set_color_number(self, number):

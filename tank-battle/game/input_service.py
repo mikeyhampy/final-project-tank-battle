@@ -30,6 +30,7 @@ class InputService:
         """
         dx = 0
         dy = 0
+        fire = False
 
         if self.is_left_pressed():
             dx = -1
@@ -37,14 +38,47 @@ class InputService:
         if self.is_right_pressed():
             dx = 1
         
-        # if self.is_up_pressed():
-        #     dy = -1
+        if self.is_up_pressed():
+            fire = True
+        else:
+            fire = False
         
         # if self.is_down_pressed():
         #     dy = 1
 
         direction = Point(dx, dy)
-        return direction
+        return direction, fire
+
+    def get_direction2(self):
+        """Gets the selected direction based on the currently pressed keys.
+
+        Args:
+            self (InputService): An instance of InputService.
+
+        Returns:
+            Point: The selected direction.
+        """
+        dx2 = 0
+        dy2 = 0
+        fire2 = False
+
+        if self.is_a_up() and self.is_d_up():
+            dx2 = 0
+        elif self.is_a_pressed():
+            dx2 = -1
+        elif self.is_d_pressed:
+            dx2 = 1
+
+        if self.is_w_pressed():
+            fire2 = True
+        else:
+            fire2 = False
+        
+        # if self.is_s_pressed():
+        #     dy = 1
+
+        direction2 = Point(dx2, dy2)
+        return direction2, fire2    
 
     def set_choice(self):
         if self.is_left_pressed():
@@ -71,6 +105,24 @@ class InputService:
 
     def is_down_pressed(self):
         return raylibpy.is_key_down(raylibpy.KEY_DOWN)
+
+    def is_a_pressed(self):
+        return raylibpy.is_key_down(raylibpy.KEY_A)
+    
+    def is_a_up(self):
+        return raylibpy.is_key_up(raylibpy.KEY_A)
+
+    def is_d_pressed(self):
+        return raylibpy.is_key_down(raylibpy.KEY_D)
+
+    def is_d_up(self):
+        return raylibpy.is_key_up(raylibpy.KEY_D)
+
+    def is_w_pressed(self):
+        return raylibpy.is_key_down(raylibpy.KEY_W)
+
+    def is_s_pressed(self):
+        return raylibpy.is_key_down(raylibpy.KEY_S)
 
     def window_should_close(self):
         return raylibpy.window_should_close()

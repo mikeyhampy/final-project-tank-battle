@@ -24,20 +24,20 @@ class HandleCollisionsAction(Action):
         balls = cast["balls"]
         tank = cast["tank"][0]
         wall = cast["walls"][0]
-        for ball in balls:
-            if self._physics_service.is_collision(ball, tank):
-                if self.num_tank_col > 0:
-                    self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                ball._velocity._y = ball._velocity._y * -1
-                self.num_tank_col = 1
+        # for ball in balls:
+        #     if self._physics_service.is_collision(ball, tank):
+        #         if self.num_tank_col > 0:
+        #             self._audio_service.stop_audio(constants.SOUND_BOUNCE)
+        #         self._audio_service.play_sound(constants.SOUND_BOUNCE)
+        #         ball._velocity._y = ball._velocity._y * -1
+        #         self.num_tank_col = 1
 
         # check ball and brick collisions
         for ball in balls:
             if self._physics_service.is_collision(ball, wall):
-                if self.num_brick_col > 0:
-                    self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                self._audio_service.play_sound(constants.SOUND_BOUNCE)
+                # if self.num_brick_col > 0:
+                #     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
+                # self._audio_service.play_sound(constants.SOUND_BOUNCE)
                 ball._velocity._y = ball._velocity._y * -1
-                #balls.remove(ball)
-                self.num_brick_col = 1
+                balls.remove(ball)
+                # self.num_brick_col = 1

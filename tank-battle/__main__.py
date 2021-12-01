@@ -84,7 +84,7 @@ def main():
         # Start the game run once
         if open_window_loop == 0:
             output_service.open_window("Tank Batter")
-            audio_service.start_audio()
+            # audio_service.start_audio()
             open_window_loop = 1
         
         """
@@ -95,15 +95,15 @@ def main():
         director.start_game()
 
         #stop audio
-        audio_service.stop_audio(check_end._sound)
-        if handle_collisions_action.num_wall_col > 0:
-            audio_service.stop_audio(constants.SOUND_BOUNCE)
-        if handle_collisions_action.num_tank_col > 0:
-            audio_service.stop_audio(constants.SOUND_BOUNCE)
+        # audio_service.stop_audio(check_end._sound)
+        # if handle_collisions_action.num_wall_col > 0:
+        #     audio_service.stop_audio(constants.SOUND_BOUNCE)
+        # if handle_collisions_action.num_tank_col > 0:
+        #     audio_service.stop_audio(constants.SOUND_BOUNCE)
         output_service.flush_buffer()
 
     #close game run once
-    audio_service.close_audio()
+    # audio_service.close_audio()
     raylibpy.close_window()
 
 if __name__ == "__main__":
