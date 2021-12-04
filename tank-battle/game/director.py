@@ -48,10 +48,10 @@ class Director:
             end_game_message[2].set_text("Play again?")
             end_game_message[3].set_text("YES")
             end_game_message[4].set_text("NO")
-            if over_win == "GAME OVER!":
-                end_game_message[1].set_text("GAME OVER!")
+            if over_win == "PLAYER 1 WINS!!!":
+                end_game_message[1].set_text("PLAYER 1 WINS!!!")
             else:
-                end_game_message[0].set_text("YOU WIN!")
+                end_game_message[0].set_text("PLAYER 2 WINS!!!")
                 
             #contol which color is used and if user will play again
             select = self._script["input"][0].select_end_game()

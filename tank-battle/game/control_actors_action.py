@@ -21,8 +21,8 @@ class ControlActorsAction(Action):
         """
         self._input_service = input_service
         self._enter = False
-        self.fire_timer = 50
-        self.fire_timer2 = 50
+        self.fire_timer = 0
+        self.fire_timer2 = 0
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -30,33 +30,42 @@ class ControlActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        # Tank 1
+        # Barrel 1 and tank 1
         fire = False
-        direction, fire = self._input_service.get_direction()
-        tank = cast["tank"][0] # there's only one in the cast
-        tank.set_velocity(direction.scale(constants.TANK_SPEED))
+        direction1, fire = self._input_service.get_direction()
+        barrel1 = cast["tank"][0]
+        tank1 = cast["tank"][2]
+        tank1.set_velocity(direction1.scale(constants.TANK_SPEED))
+        barrel1.set_velocity(direction1.scale(constants.TANK_SPEED))
+        constants.BALL_X1 += tank1._velocity._x
         self.fire_timer += 1
         if fire and self.fire_timer > 30:
             ball = Ball()
             ball.angle = constants.TANK_ANGLE
-            ball._x_pos = constants.BALL_X + (constants.BALL_X / 2)
+            
+            ball._x_pos = constants.TANK_X + (constants.TANK_X / 2) + constants.BALL_X1
             ball.set_ball()
-            ball._angle = ball.angle
+            # ball._angle = ball.angle
             cast["balls"].append(ball._balls[0])
             self.fire_timer = 0
 
-        # Tank 2
+        # Barrel 2 and tank 2
         fire2 = False
         direction2, fire2 = self._input_service.get_direction2()
-        tank2 = cast["tank"][1] # there's only one in the cast
+        barrel2 = cast["tank"][1]
+        tank2 = cast["tank"][3]
         tank2.set_velocity(direction2.scale(constants.TANK_SPEED))
+        barrel2.set_velocity(direction2.scale(constants.TANK_SPEED))
+        tank2._velocity._x
+        constants.BALL_X2 += tank2._velocity._x
         self.fire_timer2 += 1
         if fire2 and self.fire_timer2 > 30:
             ball2 = Ball()
-            ball2._x_pos = constants.BALL_X - (constants.BALL_X / 2)
+            
+            ball2._x_pos = constants.TANK_X - (constants.TANK_X / 2) + constants.BALL_X2
             ball2.angle = constants.TANK_ANGLE2
             ball2.set_ball()
-            ball2._angle = ball2.angle
+            # ball2._angle = ball2.angle
             cast["balls"].append(ball2._balls[0])
             self.fire_timer2 = 0
 

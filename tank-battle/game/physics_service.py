@@ -13,14 +13,18 @@ class PhysicsService:
         Returns true if the two items are currently intersecting.
         """
         x1 = first.get_position().get_x()
+        x1 = round(x1, 0)
         y1 = first.get_position().get_y()
+        y1 = round(y1, 0)
         width1 = first.get_width()
         height1 = first.get_height()
 
         rectangle1 = raylibpy.Rectangle(x1, y1, width1, height1)
 
         x2 = second.get_position().get_x()
+        x2 = round(x2, 0)
         y2 = second.get_position().get_y()
+        y2 = round(y2, 0)
         width2 = second.get_width()
         height2 = second.get_height()
 

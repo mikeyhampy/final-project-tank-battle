@@ -8,14 +8,16 @@ from math import radians
 class Ball():
     def __init__(self):
         self._balls = []
-        self.angle = 2
+        self.angle = 0
         self._x_pos = 0
+        self._tank_moved = 0
     def set_ball(self):
         ball = Actor()
         angle = self.angle - 90
         x_cos = cos(radians(angle))
         y_sin = sin(radians(angle))
         x = self._x_pos - constants.TANK_HEIGHT * x_cos
+        x += self._tank_moved
         y = constants.BALL_Y - constants.TANK_HEIGHT * y_sin
         dx = constants.BALL_DX * x_cos
         dy = constants.BALL_DY * y_sin

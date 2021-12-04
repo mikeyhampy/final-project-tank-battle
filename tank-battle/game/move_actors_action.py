@@ -22,7 +22,8 @@ class MoveActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         choice = True
-        check_actor = None
+        right_barrel = None
+        left_barrel = None
         for key, group in cast.items():
             if key == "tank":
                 choice = False
@@ -31,10 +32,11 @@ class MoveActorsAction(Action):
             for actor in group:
                 if not actor.get_velocity().is_zero():
                     if key == "tank":
-                        check_actor = group[0]
-                    self._move_actor(actor, choice, check_actor)
+                        right_barrel = group[0]
+                        left_barrel = group[1]
+                    self._move_actor(actor, choice, right_barrel, left_barrel)
 
-    def _move_actor(self, actor, choice, check_actor):
+    def _move_actor(self, actor, choice, right_barrel, left_barrel):
         """Moves the given actor to its next position according to its 
         velocity. Will wrap the position from one side of the screen to the 
         other when it reaches the edge in either direction.
@@ -50,22 +52,26 @@ class MoveActorsAction(Action):
         dx = velocity.get_x()
         dy = velocity.get_y()
         
+        #checks if we are not in the tank director 
+        #if not then run if, then else
         if choice:
             actor._velocity._y = dy + .1
             x = (x + dx) #% constants.MAX_Xconstants.TANK_HEIGHT
             y = (y + dy) #% constants.MAX_Y
         else:  
-            if check_actor == actor:# or self._tank_counter % 2 == 1:
+            if right_barrel == actor:# or self._tank_counter % 2 == 1:
                 # if actor._angle < 90:
                 #     actor._angle = 90
                 # if actor._angle > 170:
                 #     actor._angle = 170
-                actor._angle += dx
-                constants.TANK_ANGLE += dx
-            else:
-                constants.TANK_ANGLE2 += dx
-                actor._angle += dx
-            
+                actor._angle += dy
+                constants.TANK_ANGLE += dy
+            elif left_barrel == actor:
+                constants.TANK_ANGLE2 += dy
+                actor._angle += dy
+
+            # all tank actors (tank and barrels)
+            x = (x + dx) #% constants.MAX_X
         
         position = Point(x, y)
         actor.set_position(position)

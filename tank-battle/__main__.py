@@ -28,6 +28,10 @@ def main():
     open_window_loop = 0
     while(constants.KEEP_PLAYING):
         constants.KEEP_PLAYING = False
+        constants.LEFT_PLAYER_LOSES = False
+        constants.RIGHT_PLAYER_LOSES = False
+        constants.BALL_X1 = 0
+        constants.BALL_X2 = 0
         """
         Set up game
         """
