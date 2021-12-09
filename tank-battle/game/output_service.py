@@ -35,7 +35,7 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """ 
         raylibpy.begin_drawing()
-        raylibpy.clear_background(raylibpy.BLACK)
+        raylibpy.clear_background(raylibpy.PINK)
 
     def draw_box(self, x, y, width, height, if_tank):
         """
@@ -60,7 +60,7 @@ class OutputService:
 
         raylibpy.draw_text(text, x + 5, y + 5, constants.DEFAULT_FONT_SIZE, color)
 
-    def draw_image(self, x, y, image):
+    def draw_image_ex(self, x, y, angle, image):
         """
         Outputs the provided image on the screen.
         """
@@ -68,9 +68,10 @@ class OutputService:
 
             loaded = raylibpy.load_texture(image)
             self._textures[image] = loaded
-
+        vector = raylibpy.Vector2(x, y)
+        scale = 1
         texture = self._textures[image]
-        raylibpy.draw_texture(texture, x, y, raylibpy.WHITE)
+        raylibpy.draw_texture_ex(texture, vector, angle, scale, raylibpy.WHITE)
 
     def draw_actor(self, actor, if_tank):
         """Renders the given actor's text on the screen.
@@ -80,6 +81,7 @@ class OutputService:
             actor (Actor): The actor to render.
         """ 
         position = actor.get_position()
+        angle = actor._angle
         x = position.get_x()
         y = position.get_y()
         width = actor.get_width()
@@ -90,16 +92,13 @@ class OutputService:
 
         if actor.has_image():
             image = actor.get_image()
-            self.draw_image(x, y, image)
+            self.draw_image_ex(x, y, angle, image)
             #self.draw_image(x - width / 2, y - height / 2, image)
         elif actor.has_text():
             text = actor.get_text()
             self.draw_text(x, y, text, self._color_number)
         elif width > 0 and height > 0:
-            if if_tank and actor._angle != 0:
-                raylibpy.draw_rectangle_pro(tangle, vc, actor._angle, raylibpy.RED)
-            else:
-                self.draw_box(x, y, width, height, if_tank)
+            self.draw_box(x, y, width, height, if_tank)
         
     def draw_actors(self, actors, color_number, if_tank):
         """Renders the given list of actors on the screen.

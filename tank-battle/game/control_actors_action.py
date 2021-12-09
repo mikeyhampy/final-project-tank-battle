@@ -33,8 +33,8 @@ class ControlActorsAction(Action):
         # Barrel 1 and tank 1
         fire = False
         direction1, fire = self._input_service.get_direction()
-        barrel1 = cast["tank"][0]
-        tank1 = cast["tank"][2]
+        barrel1 = cast["barrel"][0]
+        tank1 = cast["tank"][0]
         tank1.set_velocity(direction1.scale(constants.TANK_SPEED))
         barrel1.set_velocity(direction1.scale(constants.TANK_SPEED))
         constants.BALL_X1 += tank1._velocity._x
@@ -52,8 +52,8 @@ class ControlActorsAction(Action):
         # Barrel 2 and tank 2
         fire2 = False
         direction2, fire2 = self._input_service.get_direction2()
-        barrel2 = cast["tank"][1]
-        tank2 = cast["tank"][3]
+        barrel2 = cast["barrel"][1]
+        tank2 = cast["tank"][1]
         tank2.set_velocity(direction2.scale(constants.TANK_SPEED))
         barrel2.set_velocity(direction2.scale(constants.TANK_SPEED))
         tank2._velocity._x

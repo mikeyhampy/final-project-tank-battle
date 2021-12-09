@@ -17,6 +17,7 @@ from game.audio_service import AudioService
 from game.wall import Wall
 from game.ball import Ball
 from game.tank import Tank
+from game.barrel import Barrel
 from game.control_actors_action import ControlActorsAction
 from game.handle_collisions_action import HandleCollisionsAction
 from game.handle_off_screen_action import HandleOffScreenAction
@@ -49,6 +50,12 @@ def main():
         # ball = Ball()
         # ball.set_ball()
         # cast["balls"] = ball.get_ball()
+
+        cast["barrel"] = []
+        # barrel actor
+        barrel = Barrel()
+        barrel.set_barrel()
+        cast["barrel"] = barrel.get_barrel()
 
         cast["tank"] = []
         # TODO: Create a tank here and add it to the list

@@ -3,6 +3,7 @@ from game.action import Action
 from game.point import Point
 from math import cos
 from math import sin
+from math import radians
 
 class MoveActorsAction(Action):
     """A code template for moving actors. The responsibility of this class of
@@ -25,13 +26,13 @@ class MoveActorsAction(Action):
         right_barrel = None
         left_barrel = None
         for key, group in cast.items():
-            if key == "tank":
+            if key == "tank" or key == "barrel":
                 choice = False
             else:
                 choice = True
             for actor in group:
                 if not actor.get_velocity().is_zero():
-                    if key == "tank":
+                    if key == "barrel":
                         right_barrel = group[0]
                         left_barrel = group[1]
                     self._move_actor(actor, choice, right_barrel, left_barrel)
@@ -60,15 +61,43 @@ class MoveActorsAction(Action):
             y = (y + dy) #% constants.MAX_Y
         else:  
             if right_barrel == actor:# or self._tank_counter % 2 == 1:
-                # if actor._angle < 90:
-                #     actor._angle = 90
-                # if actor._angle > 170:
-                #     actor._angle = 170
+
                 actor._angle += dy
                 constants.TANK_ANGLE += dy
+                if actor._angle <= 180:
+                    y = constants.BARREL_Y1
+                    actor._angle = 180
+                    constants.TANK_ANGLE = 180
+                    dy = 0
+
+                if actor._angle >= 270:
+                    y = constants.MAX_Y - constants.TANK_HEIGHT
+                    actor._angle = 270
+                    constants.TANK_ANGLE = 270
+                    dy = 0
+                    
+                constants.TANK_ANGLE_ADDER1 = constants.TANK_ANGLE_CHANGE1 * dy * sin(radians(constants.TANK_ANGLE))
+                y += constants.TANK_ANGLE_ADDER1
+
+
             elif left_barrel == actor:
-                constants.TANK_ANGLE2 += dy
                 actor._angle += dy
+                constants.TANK_ANGLE2 += dy
+                if actor._angle <= 270:
+                    #x = constants.BARREL_X2 - constants.BARREL_HEIGHT
+                    actor._angle = 270
+                    constants.TANK_ANGLE2 = 270
+                    dy = 0
+
+                if actor._angle >= 360:
+                    #x = constants.BARREL_X2
+                    actor._angle = 360
+                    constants.TANK_ANGLE2 = 360
+                    dy = 0
+                    
+                constants.TANK_ANGLE_ADDER2 = constants.TANK_ANGLE_CHANGE2 * dy * cos(radians(constants.TANK_ANGLE))
+                x += constants.TANK_ANGLE_ADDER2
+                
 
             # all tank actors (tank and barrels)
             x = (x + dx) #% constants.MAX_X

@@ -22,10 +22,10 @@ class HandleCollisionsAction(Action):
         """
         # set variables to check collisions
         balls = cast["balls"]
-        barrel_right = cast["tank"][0]
-        barrel_left = cast["tank"][1]        
-        tank_right = cast["tank"][2]
-        tank_left = cast["tank"][3]
+        barrel_right = cast["barrel"][0]
+        barrel_left = cast["barrel"][1]        
+        tank_right = cast["tank"][0]
+        tank_left = cast["tank"][1]
         wall = cast["walls"][0]
         # for ball in balls:
         #     if self._physics_service.is_collision(ball, tank):

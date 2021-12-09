@@ -13,7 +13,7 @@ class Ball():
         self._tank_moved = 0
     def set_ball(self):
         ball = Actor()
-        angle = self.angle - 90
+        angle = self.angle - 180
         x_cos = cos(radians(angle))
         y_sin = sin(radians(angle))
         x = self._x_pos - constants.TANK_HEIGHT * x_cos
