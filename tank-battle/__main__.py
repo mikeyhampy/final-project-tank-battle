@@ -31,8 +31,10 @@ def main():
         constants.KEEP_PLAYING = False
         constants.LEFT_PLAYER_LOSES = False
         constants.RIGHT_PLAYER_LOSES = False
-        constants.BALL_X1 = 0
-        constants.BALL_X2 = 0
+        constants.TANK_ANGLE_ADDER1 = 0
+        constants.TANK_ANGLE_ADDER2 = 0
+        constants.TANK_ANGLE = 180
+        constants.TANK_ANGLE2 = 360
         """
         Set up game
         """

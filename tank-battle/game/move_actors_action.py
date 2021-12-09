@@ -60,7 +60,7 @@ class MoveActorsAction(Action):
             x = (x + dx) #% constants.MAX_Xconstants.TANK_HEIGHT
             y = (y + dy) #% constants.MAX_Y
         else:  
-            if right_barrel == actor:# or self._tank_counter % 2 == 1:
+            if right_barrel == actor:
 
                 actor._angle += dy
                 constants.TANK_ANGLE += dy
@@ -84,13 +84,11 @@ class MoveActorsAction(Action):
                 actor._angle += dy
                 constants.TANK_ANGLE2 += dy
                 if actor._angle <= 270:
-                    #x = constants.BARREL_X2 - constants.BARREL_HEIGHT
                     actor._angle = 270
                     constants.TANK_ANGLE2 = 270
                     dy = 0
 
                 if actor._angle >= 360:
-                    #x = constants.BARREL_X2
                     actor._angle = 360
                     constants.TANK_ANGLE2 = 360
                     dy = 0
@@ -100,7 +98,7 @@ class MoveActorsAction(Action):
                 
 
             # all tank actors (tank and barrels)
-            x = (x + dx) #% constants.MAX_X
+            x = (x + dx)
         
         position = Point(x, y)
         actor.set_position(position)

@@ -16,10 +16,10 @@ class Ball():
     def set_ball1(self):
         ball = Actor()
         ball._scale = .5
-        ball._angle = self.angle1 - 180
+        ball._angle = self.angle1
         x_cos = cos(radians(ball._angle))
         y_sin = sin(radians(ball._angle))
-        x = constants.BALL_X1 - constants.BARREL_WIDTH * x_cos
+        x = constants.BALL1_POS - constants.BARREL_WIDTH * x_cos
         x += self._tank_moved1
         y = constants.BALL_Y - constants.BARREL_WIDTH * y_sin
         dx = constants.BALL_DX * x_cos
@@ -36,13 +36,13 @@ class Ball():
     def set_ball2(self):
         ball2 = Actor()
         ball2._scale = .5
-        ball2._angle = self.angle2 - 180
+        ball2._angle = self.angle2
         x_cos = cos(radians(ball2._angle))
         y_sin = sin(radians(ball2._angle))
-        x = constants.BALL_X2 + constants.BARREL_WIDTH * x_cos
+        x = constants.BALL2_POS + constants.BARREL_WIDTH * x_cos
         x += self._tank_moved2
         y = constants.BALL_Y - constants.BARREL_WIDTH * y_sin
-        dx = constants.BALL_DX * x_cos
+        dx = (constants.BALL_DX) * x_cos
         dy = constants.BALL_DY * y_sin
         position = Point(x, y)
         velocity = Point(dx, dy)
