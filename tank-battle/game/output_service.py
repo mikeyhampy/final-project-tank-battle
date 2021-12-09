@@ -35,7 +35,7 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """ 
         raylibpy.begin_drawing()
-        raylibpy.clear_background(raylibpy.PINK)
+        raylibpy.clear_background(raylibpy.BLACK)
 
     def draw_box(self, x, y, width, height, if_tank):
         """
@@ -60,7 +60,7 @@ class OutputService:
 
         raylibpy.draw_text(text, x + 5, y + 5, constants.DEFAULT_FONT_SIZE, color)
 
-    def draw_image_ex(self, x, y, angle, image):
+    def draw_image_ex(self, x, y, angle, scale, image):
         """
         Outputs the provided image on the screen.
         """
@@ -69,7 +69,6 @@ class OutputService:
             loaded = raylibpy.load_texture(image)
             self._textures[image] = loaded
         vector = raylibpy.Vector2(x, y)
-        scale = 1
         texture = self._textures[image]
         raylibpy.draw_texture_ex(texture, vector, angle, scale, raylibpy.WHITE)
 
@@ -82,6 +81,7 @@ class OutputService:
         """ 
         position = actor.get_position()
         angle = actor._angle
+        scale = actor._scale
         x = position.get_x()
         y = position.get_y()
         width = actor.get_width()
@@ -92,7 +92,7 @@ class OutputService:
 
         if actor.has_image():
             image = actor.get_image()
-            self.draw_image_ex(x, y, angle, image)
+            self.draw_image_ex(x, y, angle, scale, image)
             #self.draw_image(x - width / 2, y - height / 2, image)
         elif actor.has_text():
             text = actor.get_text()

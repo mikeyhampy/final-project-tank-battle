@@ -43,7 +43,7 @@ class ControlActorsAction(Action):
             ball = Ball()
             ball.angle = constants.TANK_ANGLE
             
-            ball._x_pos = constants.TANK_X + (constants.TANK_X / 2) + constants.BALL_X1
+            ball._x_pos = constants.TANK_X1 + constants.BALL_X1
             ball.set_ball()
             # ball._angle = ball.angle
             cast["balls"].append(ball._balls[0])
@@ -62,7 +62,7 @@ class ControlActorsAction(Action):
         if fire2 and self.fire_timer2 > 30:
             ball2 = Ball()
             
-            ball2._x_pos = constants.TANK_X - (constants.TANK_X / 2) + constants.BALL_X2
+            ball2._x_pos = constants.TANK_X2 + constants.BALL_X2
             ball2.angle = constants.TANK_ANGLE2
             ball2.set_ball()
             # ball2._angle = ball2.angle
