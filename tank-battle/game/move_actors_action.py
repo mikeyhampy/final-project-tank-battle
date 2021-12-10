@@ -76,8 +76,8 @@ class MoveActorsAction(Action):
                     constants.TANK_ANGLE = 270
                     dy = 0
                     
-                constants.TANK_ANGLE_ADDER1 = constants.TANK_ANGLE_CHANGE1 * dy * sin(radians(constants.TANK_ANGLE))
-                y += constants.TANK_ANGLE_ADDER1
+                adder = constants.TANK_ANGLE_CHANGE1 * dy * sin(radians(constants.TANK_ANGLE))
+                y += adder
                 constants.BALL_CHANGE_X1 += dx
 
             elif left_barrel == actor:
@@ -93,8 +93,8 @@ class MoveActorsAction(Action):
                     constants.TANK_ANGLE2 = 360
                     dy = 0
                     
-                constants.TANK_ANGLE_ADDER2 = constants.TANK_ANGLE_CHANGE2 * dy * cos(radians(constants.TANK_ANGLE))
-                x += constants.TANK_ANGLE_ADDER2
+                adder2 = constants.TANK_ANGLE_CHANGE2 * dy * cos(radians(constants.TANK_ANGLE))
+                x += adder2
                 constants.BALL_CHANGE_X2 += dx
 
             # all tank actors (tank and barrels)
