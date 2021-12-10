@@ -35,6 +35,8 @@ def main():
         constants.TANK_ANGLE_ADDER2 = 0
         constants.TANK_ANGLE = 180
         constants.TANK_ANGLE2 = 360
+        constants.BALL_CHANGE_X1 = 0
+        constants.BALL_CHANGE_X2 = 0
         """
         Set up game
         """
