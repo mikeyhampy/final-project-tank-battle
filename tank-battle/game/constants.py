@@ -28,7 +28,26 @@ TANK_SPEED = 1
 TANK_ANGLE = 180
 TANK_ANGLE2 = 360
 
+FULL_TANK_WIDTH = 144
+FULL_TANK_HEIGHT = 45
+SELECTOR_Y = 120
+SELECTOR_X = 92
+SELECTOR_LINE_WIDTH = 0
 
+FULL1_TANK_FILE_PATH = "./tank-battle/assets/full1_"
+RED = "red.png"
+GRAY = "gray.png"
+BLUE = "blue.png"
+ORANGE = "orange.png"
+YELLOW = "yellow.png"
+GREEN = "green.png"
+
+IMAGE_FULL1_RED = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + RED)
+IMAGE_FULL1_GRAY = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + GRAY)
+IMAGE_FULL1_BLUE = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + BLUE)
+IMAGE_FULL1_ORANGE = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + ORANGE)
+IMAGE_FULL1_YELLOW = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + YELLOW)
+IMAGE_FULL1_GREEN = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + GREEN)
 
 IMAGE_BARREL1 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_blue.png")
 IMAGE_TANK1 = os.path.join(os.getcwd(), "./tank-battle/assets/tank1_blue.png")

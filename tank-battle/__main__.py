@@ -26,6 +26,20 @@ from game.check_end import CheckEnd
 from game.end_game import EndGame
 
 def main():
+    # Create the script {key: tag, value: list}
+    # script = {}
+
+    # input_service = InputService()
+    # output_service = OutputService()
+    # physics_service = PhysicsService()
+    # audio_service = AudioService()
+
+    # move_actors_action = MoveActorsAction()
+    # handle_off_screen_action = HandleOffScreenAction()
+    # control_actors_action = ControlActorsAction(input_service)
+    # draw_actors_action = DrawActorsAction(output_service)
+    # handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
+    # check_end = CheckEnd(audio_service)
     open_window_loop = 0
     while(constants.KEEP_PLAYING):
         constants.KEEP_PLAYING = False
@@ -35,6 +49,27 @@ def main():
         constants.TANK_ANGLE2 = 360
         constants.BALL_CHANGE_X1 = 0
         constants.BALL_CHANGE_X2 = 0
+
+        # Create the script {key: tag, value: list}
+        script = {}
+
+        input_service = InputService()
+        output_service = OutputService()
+        physics_service = PhysicsService()
+        audio_service = AudioService()
+
+        move_actors_action = MoveActorsAction()
+        handle_off_screen_action = HandleOffScreenAction()
+        control_actors_action = ControlActorsAction(input_service)
+        draw_actors_action = DrawActorsAction(output_service)
+        handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
+        check_end = CheckEnd(audio_service)
+
+        # TODO: Create additional actions here and add them to the script
+
+        script["input"] = [control_actors_action]
+        script["update"] = [move_actors_action, handle_off_screen_action, handle_collisions_action]
+        script["output"] = [check_end, draw_actors_action]
         """
         Set up game
         """
@@ -72,25 +107,25 @@ def main():
 
 
         # Create the script {key: tag, value: list}
-        script = {}
+        # script = {}
 
-        input_service = InputService()
-        output_service = OutputService()
-        physics_service = PhysicsService()
-        audio_service = AudioService()
+        # input_service = InputService()
+        # output_service = OutputService()
+        # physics_service = PhysicsService()
+        # audio_service = AudioService()
 
-        move_actors_action = MoveActorsAction()
-        handle_off_screen_action = HandleOffScreenAction()
-        control_actors_action = ControlActorsAction(input_service)
-        draw_actors_action = DrawActorsAction(output_service)
-        handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
-        check_end = CheckEnd(audio_service)
+        # move_actors_action = MoveActorsAction()
+        # handle_off_screen_action = HandleOffScreenAction()
+        # control_actors_action = ControlActorsAction(input_service)
+        # draw_actors_action = DrawActorsAction(output_service)
+        # handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
+        # check_end = CheckEnd(audio_service)
 
         # TODO: Create additional actions here and add them to the script
 
-        script["input"] = [control_actors_action]
-        script["update"] = [move_actors_action, handle_off_screen_action, handle_collisions_action]
-        script["output"] = [check_end, draw_actors_action]
+        # script["input"] = [control_actors_action]
+        # script["update"] = [move_actors_action, handle_off_screen_action, handle_collisions_action]
+        # script["output"] = [check_end, draw_actors_action]
 
 
 
