@@ -7,7 +7,7 @@ class Tank():
         self._tanks = []
 
     def set_tank(self):
-         #right tank
+        #right tank
         tank1 = Actor()
         tank_x1 = constants.TANK_X1
         position = Point(tank_x1, constants.TANK_Y)

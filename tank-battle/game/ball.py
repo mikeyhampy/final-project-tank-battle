@@ -19,9 +19,9 @@ class Ball():
         ball._angle = self.angle1
         x_cos = cos(radians(ball._angle))
         y_sin = sin(radians(ball._angle))
-        x = constants.BALL1_POS - constants.BARREL_WIDTH * x_cos
+        x = constants.BALL1_POS - (constants.BARREL_WIDTH * x_cos) + ((constants.BALL_WIDTH * .75) * y_sin) #(constants.BALL_WIDTH / 135) * ball._angle + 
         x += self._tank_moved1
-        y = constants.BALL_Y - constants.BARREL_WIDTH * y_sin
+        y = constants.BALL_Y1 - constants.BARREL_WIDTH * y_sin
         dx = constants.BALL_DX * x_cos
         dy = constants.BALL_DY * y_sin
         position = Point(x, y)
@@ -39,9 +39,9 @@ class Ball():
         ball2._angle = self.angle2
         x_cos = cos(radians(ball2._angle))
         y_sin = sin(radians(ball2._angle))
-        x = constants.BALL2_POS + constants.BARREL_WIDTH * x_cos
+        x = constants.BALL2_POS - constants.BARREL_WIDTH * x_cos
         x += self._tank_moved2
-        y = constants.BALL_Y - constants.BARREL_WIDTH * y_sin
+        y = constants.BALL_Y - (constants.BARREL_WIDTH - (constants.BALL_WIDTH)) * y_sin #(constants.BALL_WIDTH / 225) * ball2._angle + 
         dx = (constants.BALL_DX) * x_cos
         dy = constants.BALL_DY * y_sin
         position = Point(x, y)
