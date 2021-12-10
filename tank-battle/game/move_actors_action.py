@@ -48,6 +48,7 @@ class MoveActorsAction(Action):
         position = actor.get_position()
         velocity = actor.get_velocity()
 
+
         x = position.get_x()
         y = position.get_y()
         dx = velocity.get_x()
@@ -56,9 +57,20 @@ class MoveActorsAction(Action):
         #checks if we are not in the tank director 
         #if not then run if, then else
         if choice:
+            change_size = .05
+            change_scale = .005
+            if actor._scale >= (1):
+                actor._scale = 1
+                actor._width = (2 * constants.BALL_WIDTH)
+                actor._height = (2 * constants.BALL_HEIGHT)
+                change_size = 0
+            else:
+                actor._width += change_size
+                actor._height += change_size
+                actor._scale += change_scale
             actor._velocity._y = dy + .1
-            x = (x + dx) #% constants.MAX_Xconstants.TANK_HEIGHT
-            y = (y + dy) #% constants.MAX_Y
+            x = (x + dx) + (change_size / 2)
+            y = (y + dy) + (change_size / 2)
         else:  
             if right_barrel == actor:
 
@@ -76,7 +88,7 @@ class MoveActorsAction(Action):
                     constants.TANK_ANGLE = 270
                     dy = 0
                     
-                adder = constants.TANK_ANGLE_CHANGE1 * dy * sin(radians(constants.TANK_ANGLE))
+                adder = constants.TANK_ANGLE_CHANGE * dy * sin(radians(constants.TANK_ANGLE))
                 y += adder
                 constants.BALL_CHANGE_X1 += dx
 
@@ -93,7 +105,7 @@ class MoveActorsAction(Action):
                     constants.TANK_ANGLE2 = 360
                     dy = 0
                     
-                adder2 = constants.TANK_ANGLE_CHANGE2 * dy * cos(radians(constants.TANK_ANGLE))
+                adder2 = constants.TANK_ANGLE_CHANGE * (dy) * cos(radians(constants.TANK_ANGLE2))
                 x += adder2
                 constants.BALL_CHANGE_X2 += dx
 
