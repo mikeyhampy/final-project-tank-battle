@@ -20,6 +20,14 @@ class InputService:
         self._dx = -1
         self._space = False
         self._enter = False
+        self._up = False
+        self._down = False
+        self._right = False
+        self._left = False
+        self._w = False
+        self._s = False
+        self._a = False
+        self._d = False
         
     def get_direction(self):
         """Gets the selected direction based on the currently pressed keys.
@@ -105,6 +113,95 @@ class InputService:
         else:
             return False
 
+    def choose_color1(self):
+        """
+        choose colors for tank 1
+        """
+        dx = 0
+        dy = 0
+        if self._enter == False:
+            # choose left
+            if self.is_left_up():
+                self._left = True
+            if self.is_left_pressed() and self._left:
+                dx = -1
+                self._left = False
+            
+            # choose right
+            if self.is_right_up():
+                self._right = True
+            if self.is_right_pressed() and self._right:
+                dx = 1
+                self._right = False
+            
+            # choose up
+            if self.is_up_up():
+                self._up = True
+            if self.is_up_pressed() and self._up:
+                dy = -2
+                self._up = False
+            
+            # choose down
+            if self.is_down_up():
+                self._down = True
+            if self.is_down_pressed() and self._down:
+                dy = 2
+                self._down = False
+
+            # select (enter)
+            if self.is_enter_pressed():
+                self._enter = True
+
+        direction = Point(dx, dy)
+        return direction, self._enter
+    def  choose_color2(self):
+        """
+        choose colors for tank 2
+        """
+        dx = 0
+        dy = 0
+        if self._space == False:
+            # choose a
+            if self.is_a_up():
+                self._a = True
+            if self.is_a_pressed() and self._a:
+                dx = -1
+                self._a = False
+            
+            # choose d
+            if self.is_d_up():
+                self._d = True
+            if self.is_d_pressed() and self._d:
+                dx = 1
+                self._d = False
+            
+            # choose w
+            if self.is_w_up():
+                self._w = True
+            if self.is_w_pressed() and self._w:
+                dy = -2
+                self._w = False
+            
+            # choose s
+            if self.is_s_up():
+                self._s = True
+            if self.is_s_pressed() and self._s:
+                dy = 2
+                self._s = False
+
+            # select (space)
+            if self.is_space_pressed():
+                self._true = True
+
+        direction = Point(dx, dy)
+        return direction, self._space
+
+    def window_should_close(self):
+        return raylibpy.window_should_close()
+
+    """
+    Directional key inputs
+    """
     # left pressed and not pressed
     def is_left_pressed(self):
         return raylibpy.is_key_down(raylibpy.KEY_LEFT)
@@ -164,7 +261,3 @@ class InputService:
         return raylibpy.is_key_down(raylibpy.KEY_ENTER)
     def is_enter_up(self):
         return raylibpy.is_key_up(raylibpy.KEY_ENTER)
-
-
-    def window_should_close(self):
-        return raylibpy.window_should_close()

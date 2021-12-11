@@ -4,12 +4,12 @@ from game import constants
 
 class Colors():
     def __init__(self):
-        self._tank_colors = [[], []]
-        self._color_choice = None
-        self._tank_full_color = None
+        self._tank_colors = []
+        self._color_choice = ""
+        self._tank_full_color = ""
 
     def set_colors(self):
-        color_of_tank = None
+        color_of_tank = ""
 
         # size and position and gap
         width = constants.FULL_TANK_WIDTH
@@ -50,7 +50,7 @@ class Colors():
                         color_of_tank = constants.IMAGE_FULL1_GREEN
                         
                 colors.set_image(color_of_tank)
-                self._tank_colors[j].append(colors)
+                self._tank_colors.append(colors)
 
                 # update position and i (x_pos) looper
         #92 144 92 144 92 144 92

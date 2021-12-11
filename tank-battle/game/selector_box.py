@@ -4,35 +4,38 @@ from game import constants
 
 class Selectorbox():
     def __init__(self):
-        self._selectors = [[], []]
+        self._selectors = []
 
     def set_selector_boxes(self):
-        i = 0
-        line_width = constants.SELECTOR_LINE_WIDTH
-        x = constants.SELECTOR_X - (line_width * 2)
-        y = constants.SELECTOR_Y - (line_width * 2)
-        width = constants.FULL_TANK_WIDTH + (line_width * 4)
-        height = constants.FULL_TANK_HEIGHT + (line_width * 4)
-        line_color = "red"
-        while(i < 2):
-            selector = Actor()
-            selector._box_line_width = line_width
-            selector._colors_of_lines = line_color
-            position = Point(x, y)
-            selector.set_position(position)
-            selector.set_width(width)
-            selector.set_height(height)
-            #wall.set_image(constants.IMAGE_WALL)
-            # self._selectors[i][0] = selector
-            self._selectors[i].append(selector)
-            if i ==  0:
-                line_color = "blue"
-                x -= (line_width * 2)
-                y -= (line_width * 2)
-                width += (line_width * 4)
-                height += (line_width * 4)
-                i += 1
+        # selector box 1
+        xy_dif_width = constants.SELECTOR_LINE_WIDTH * 2
+        line_width = constants.SELECTOR_LINE_WIDTH * 4
+        x1 = constants.SELECTOR_X - (xy_dif_width * 2)
+        y1 = constants.SELECTOR_Y - (xy_dif_width * 2)
+        width1 = constants.FULL_TANK_WIDTH + (line_width * 2)
+        height1 = constants.FULL_TANK_HEIGHT + (line_width * 2)
+        selector1 = Actor()
+        selector1._box_line_width = constants.SELECTOR_LINE_WIDTH
+        selector1._colors_of_lines = "red"
+        position1 = Point(x1, y1)
+        selector1.set_position(position1)
+        selector1.set_width(width1)
+        selector1.set_height(height1)
+        self._selectors.append(selector1)
 
+        #selector box 2
+        x2 = constants.SELECTOR_X - xy_dif_width
+        y2 = constants.SELECTOR_Y - xy_dif_width
+        width2 = constants.FULL_TANK_WIDTH + line_width
+        height2 = constants.FULL_TANK_HEIGHT + line_width
+        selector2 = Actor()
+        selector2._box_line_width = constants.SELECTOR_LINE_WIDTH
+        selector2._colors_of_lines = "blue"
+        position2 = Point(x2, y2)
+        selector2.set_position(position2)
+        selector2.set_width(width2)
+        selector2.set_height(height2)
+        self._selectors.append(selector2)
 
     def get_selector_boxes(self):
         return self._selectors

@@ -30,42 +30,55 @@ class ControlActorsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        # Barrel 1 and tank 1
-        fire = False
-        direction1, fire = self._input_service.get_direction()
-        barrel1 = cast["barrel"][0]
-        tank1 = cast["tank"][0]
-        tank1.set_velocity(direction1.scale(constants.TANK_SPEED))
-        barrel1.set_velocity(direction1.scale(constants.TANK_SPEED))
-         
-        self.fire_timer += 1
-        if fire and self.fire_timer > 30:
-            ball = Ball()
-            ball._tank_moved1 += tank1._velocity._x
-            ball.angle1 += constants.TANK_ANGLE
-            ball.set_ball1()
-            # ball._angle = ball.angle
-            cast["balls"].append(ball._balls[0])
-            self.fire_timer = 0
+        if len(cast) == 2:
+            #beginning of the game
+            selector_p1 = cast["selector"][0]
+            selector_p2 = cast["selector"][1]
+            select_direction1, enter_color1 = self._input_service.choose_color1()
+            select_direction2, enter_color2 = self._input_service.choose_color2()
+            selector_p1.set_velocity(select_direction1)
+            selector_p2.set_velocity(select_direction2)
+            selector_p1._color_selected = enter_color1
+            selector_p2._color_selected = enter_color2
 
-        # Barrel 2 and tank 2
-        fire2 = False
-        direction2, fire2 = self._input_service.get_direction2()
-        barrel2 = cast["barrel"][1]
-        tank2 = cast["tank"][1]
-        tank2.set_velocity(direction2.scale(constants.TANK_SPEED))
-        barrel2.set_velocity(direction2.scale(constants.TANK_SPEED))
-        #tank2._velocity._x
-        self.fire_timer2 += 1
-        if fire2 and self.fire_timer2 > 30:
-            ball = Ball()
-            ball._tank_moved2 += tank2._velocity._x
-            ball.angle2 += constants.TANK_ANGLE2
+        else:
+            # Barrel 1 and tank 1
+            fire = False
+            direction1, fire = self._input_service.get_direction()
+            barrel1 = cast["barrel"][0]
+            tank1 = cast["tank"][0]
+            tank1.set_velocity(direction1.scale(constants.TANK_SPEED))
+            barrel1.set_velocity(direction1.scale(constants.TANK_SPEED))
 
-            ball.set_ball2()
-            # ball2._angle = ball2.angle
-            cast["balls"].append(ball._balls[0])
-            self.fire_timer2 = 0
+            #fire ball 1 
+            self.fire_timer += 1
+            if fire and self.fire_timer > 30:
+                ball = Ball()
+                ball._tank_moved1 += tank1._velocity._x
+                ball.angle1 += constants.TANK_ANGLE
+                ball.set_ball1()
+                cast["balls"].append(ball._balls[0])
+                self.fire_timer = 0
+
+            # Barrel 2 and tank 2
+            fire2 = False
+            direction2, fire2 = self._input_service.get_direction2()
+            barrel2 = cast["barrel"][1]
+            tank2 = cast["tank"][1]
+            tank2.set_velocity(direction2.scale(constants.TANK_SPEED))
+            barrel2.set_velocity(direction2.scale(constants.TANK_SPEED))
+
+            # fire the ball 2
+            self.fire_timer2 += 1
+            if fire2 and self.fire_timer2 > 30:
+                ball = Ball()
+                ball._tank_moved2 += tank2._velocity._x
+                ball.angle2 += constants.TANK_ANGLE2
+
+                ball.set_ball2()
+                # ball2._angle = ball2.angle
+                cast["balls"].append(ball._balls[0])
+                self.fire_timer2 = 0
 
     def select_end_game(self):
         self._enter = self._input_service.set_choice()

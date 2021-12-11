@@ -31,6 +31,12 @@ class Actor:
         self._image = ""
         self._angle = 0
         self._scale = 1
+        #just for selecting a color
+        self._colors_of_lines = ""
+        self._box_line_width = 0
+        self._color_selected = False
+        self._color_index_x = 0
+        self._color_index_y = 0
 
     def get_width(self):
         return self._width

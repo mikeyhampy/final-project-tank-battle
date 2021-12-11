@@ -25,7 +25,17 @@ class Director:
         self._cast = cast
         self._script = script
         self._keep_playing = True
+        self._start_game = True
         
+    def pre_game(self):
+        """Starts the pre-game actions"""
+        while self._start_game:
+            self._cue_action("input")
+            self._cue_action("update")
+            self._cue_action("output")
+
+            if raylibpy.window_should_close():
+                self._start_game = False
     def start_game(self):
         """Starts the game loop to control the sequence of play."""
         while self._keep_playing:

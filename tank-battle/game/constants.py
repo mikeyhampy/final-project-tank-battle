@@ -41,13 +41,18 @@ BLUE = "blue.png"
 ORANGE = "orange.png"
 YELLOW = "yellow.png"
 GREEN = "green.png"
-
-IMAGE_FULL1_RED = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + RED)
-IMAGE_FULL1_GRAY = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + GRAY)
-IMAGE_FULL1_BLUE = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + BLUE)
-IMAGE_FULL1_ORANGE = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + ORANGE)
-IMAGE_FULL1_YELLOW = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + YELLOW)
-IMAGE_FULL1_GREEN = os.path.join(os.getcwd(), FULL1_TANK_FILE_PATH + GREEN)
+CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + RED
+IMAGE_FULL1_RED = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
+CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + GRAY
+IMAGE_FULL1_GRAY = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
+CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + BLUE
+IMAGE_FULL1_BLUE = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
+CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + ORANGE
+IMAGE_FULL1_ORANGE = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
+CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + YELLOW
+IMAGE_FULL1_YELLOW = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
+CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + GREEN
+IMAGE_FULL1_GREEN = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
 
 IMAGE_BARREL1 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_blue.png")
 IMAGE_TANK1 = os.path.join(os.getcwd(), "./tank-battle/assets/tank1_blue.png")
