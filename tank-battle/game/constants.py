@@ -16,7 +16,7 @@ TANK_HEIGHT = 45
 BARREL_WIDTH = 71
 BARREL_HEIGHT = 17
 
-WALL_WIDTH = 20
+WALL_WIDTH = 17
 WALL_HEIGHT = 275
 
 BALL_WIDTH = 5
@@ -53,7 +53,10 @@ IMAGE_BARREL1 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_blue.png"
 IMAGE_TANK1 = os.path.join(os.getcwd(), "./tank-battle/assets/tank1_blue.png")
 IMAGE_BARREL2 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_red.png")
 IMAGE_TANK2 = os.path.join(os.getcwd(), "./tank-battle/assets/tank2_red.png")
-IMAGE_BALL = os.path.join(os.getcwd(), "./tank-battle/assets/ball_red_10.png")
+IMAGE_BALL = os.path.join(os.getcwd(), "./tank-battle/assets/ball_red.png")
+
+IMAGE_WALL = os.path.join(os.getcwd(), "./tank-battle/assets/wall.png")
+#IMAGE_BACKGROUND = os.path.join(os.getcwd(), "./tank-battle/assets/background.png")
 
 SOUND_START = os.path.join(os.getcwd(), "./tank-battle/assets/start.wav")
 SOUND_BOUNCE = os.path.join(os.getcwd(), "./tank-battle/assets/boing.wav")
@@ -64,7 +67,7 @@ SOUND_VICTORY = os.path.join(os.getcwd(), "./tank-battle/assets/ff_vii_victory.w
 
 TANK_X1 = (MAX_X * (1 / 2)) + (MAX_X * (1 / 4))
 TANK_X2 = (MAX_X * (1 / 2)) - (MAX_X * (1 / 4)) - TANK_WIDTH
-TANK_Y = MAX_Y - TANK_HEIGHT
+TANK_Y = MAX_Y - TANK_HEIGHT - 20
 
 BARREL_X1 = TANK_X1 + (TANK_WIDTH - TANK_FRONT_WIDTH)
 BARREL_X2 = TANK_X2 + (TANK_FRONT_WIDTH)

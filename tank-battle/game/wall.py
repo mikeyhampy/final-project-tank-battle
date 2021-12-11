@@ -17,7 +17,7 @@ class Wall():
         wall.set_position(position)
         wall.set_width(constants.WALL_WIDTH)
         wall.set_height(constants.WALL_HEIGHT)
-        #wall.set_image(constants.IMAGE_WALL)
+        wall.set_image(constants.IMAGE_WALL)
         self._walls.append(wall)
 
     def get_walls(self):

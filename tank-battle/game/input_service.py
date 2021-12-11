@@ -18,6 +18,8 @@ class InputService:
             self (InputService): An instance of InputService.
         """
         self._dx = -1
+        self._space = False
+        self._enter = False
         
     def get_direction(self):
         """Gets the selected direction based on the currently pressed keys.
@@ -31,19 +33,6 @@ class InputService:
         dx = 0
         dy = 0
         fire = False
-        self.global_right = False
- 
-
-        jump_right = False
-        if self.is_right_up():
-            self.global_right = True
- 
-        if self.is_right_pressed() and self.global_right:
-            jump_right = True
-            self.global_right = False
- 
-
-
 
         if self.is_left_pressed():
             dx = -1
@@ -57,10 +46,13 @@ class InputService:
         if self.is_down_pressed():
             dy = -1
 
-        if self.is_enter_pressed():
+        # fire cannon once
+        if self.is_enter_up():
+            self._enter = True
+        if self.is_enter_pressed() and self._enter:
             fire = True
-        else:
-            fire = False
+            self._enter = False
+
         direction = Point(dx, dy)
         return direction, fire
 
@@ -91,10 +83,12 @@ class InputService:
         if self.is_s_pressed():
             dy2 = 1
 
-        if self.is_space_pressed():
+        # fire cannon once
+        if self.is_space_up():
+            self._space = True
+        if self.is_space_pressed() and self._space:
             fire2 = True
-        else:
-            fire2 = False
+            self._space = False
 
         direction2 = Point(dx2, dy2)
         return direction2, fire2    
