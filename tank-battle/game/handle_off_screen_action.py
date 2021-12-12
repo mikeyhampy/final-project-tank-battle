@@ -5,8 +5,12 @@ class HandleOffScreenAction(Action):
     """
     Bounces the ball off the walls
     """
+    def __init__(self, audio_service):
+        """The class constructor."""
+        self._audio_service = audio_service
 
     def execute(self, cast):
+
         #get ball data
         balls = cast["balls"]
         tank1 = cast["tank"][0]
@@ -17,20 +21,23 @@ class HandleOffScreenAction(Action):
             x = ball._position.get_x()
             y = ball._position.get_y()
 
-            #bounces horizontal
-            if( x <= 0 or x >= constants.MAX_X - constants.BALL_WIDTH or y >= constants.MAX_Y - constants.BALL_HEIGHT):
+            #hit horizontal
+            if( x <= 0 - constants.BALL_WIDTH or x >= constants.MAX_X):
                 balls.remove(ball)
+            
+            # hit ground
+            if y >= constants.MAX_Y:
+                balls.remove(ball)
+                self._audio_service.play_sound(constants.SOUND_THUD)
 
         #get tank data
         tank_x1 = tank1._position.get_x()
 
         tank_x2 = tank2._position.get_x()
-        # barrel_x1 = barrel1._position.get_x()
-        # barrel_x2 = barrel2._position.get_x()
+
         #tank won't go off screen
         if(tank_x2 < 0):
             tank2._position._x = 0
-            # barrel2._velocity._x = 0
             barrel2._position._x += 1
         if(tank_x1 > constants.MAX_X - constants.TANK_WIDTH):
             tank1._position._x = constants.MAX_X - constants.TANK_WIDTH

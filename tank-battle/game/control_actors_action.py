@@ -13,16 +13,18 @@ class ControlActorsAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def __init__(self, input_service):
+    def __init__(self, input_service, audio_service):
         """The class constructor.
         
         Args:
             input_service (InputService): An instance of InputService.
         """
         self._input_service = input_service
+        self._audio_service = audio_service
         self._enter = False
         self.fire_timer = 0
         self.fire_timer2 = 0
+        self._choice = 0
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -52,14 +54,18 @@ class ControlActorsAction(Action):
 
             #fire ball 1 
             self.fire_timer += 1
-            if fire and self.fire_timer > 30:
+            if self.fire_timer == 20:
+                self._audio_service.play_sound(constants.SOUND_RELOAD)
+                #self._audio_service.stop_audio(constants.SOUND_RELOAD)
+                
+            if fire and self.fire_timer > 35:
                 ball = Ball()
                 ball._tank_moved1 += tank1._velocity._x
                 ball.angle1 += constants.TANK_ANGLE
                 ball.set_ball1()
                 cast["balls"].append(ball._balls[0])
                 self.fire_timer = 0
-
+                self._audio_service.play_sound(constants.SOUND_FIRE)
             # Barrel 2 and tank 2
             fire2 = False
             direction2, fire2 = self._input_service.get_direction2()
@@ -70,10 +76,13 @@ class ControlActorsAction(Action):
 
             # fire the ball 2
             self.fire_timer2 += 1
-            if fire2 and self.fire_timer2 > 30:
+            if self.fire_timer2 == 20:
+                self._audio_service.play_sound(constants.SOUND_RELOAD)
+            if fire2 and self.fire_timer2 > 35:
                 ball = Ball()
                 ball._tank_moved2 += tank2._velocity._x
                 ball.angle2 += constants.TANK_ANGLE2
+                self._audio_service.play_sound(constants.SOUND_FIRE)
 
                 ball.set_ball2()
                 # ball2._angle = ball2.angle
@@ -83,6 +92,9 @@ class ControlActorsAction(Action):
     def select_end_game(self):
         self._enter = self._input_service.set_choice()
         choice = self._input_service._dx
+        if choice != self._choice:
+            self._audio_service.play_sound(constants.SOUND_TOGGLE)
+        self._choice = choice
         if choice == 0:
             return 0
         elif choice == -1:

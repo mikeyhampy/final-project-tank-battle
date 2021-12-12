@@ -52,7 +52,7 @@ class OutputService:
         """
         Outputs the provided text at the desired location.
         """
-        color = raylibpy.WHITE
+        color = raylibpy.LIGHTGRAY
 
         if text == "YES" and text_color == -1:
             color = raylibpy.GREEN
@@ -73,7 +73,7 @@ class OutputService:
         texture = self._textures[image]
         raylibpy.draw_texture_ex(texture, vector, angle, scale, raylibpy.WHITE)
 
-    def draw_actor(self, actor, if_tank):
+    def draw_actor(self, actor):
         """Renders the given actor's text on the screen.
 
         Args:
@@ -103,7 +103,7 @@ class OutputService:
         elif width > 0 and height > 0:
             self.draw_box_ex(rectangle, width_of_line, color_of_line)
         
-    def draw_actors(self, actors, color_number, if_tank):
+    def draw_actors(self, actors, color_number):
         """Renders the given list of actors on the screen.
 
         Args:
@@ -112,7 +112,7 @@ class OutputService:
         """ 
         self._color_number = color_number
         for actor in actors:
-            self.draw_actor(actor, if_tank)
+            self.draw_actor(actor)
     
     def flush_buffer(self):
         """Renders the screen.
@@ -121,4 +121,3 @@ class OutputService:
             self (OutputService): An instance of OutputService.
         """ 
         raylibpy.end_drawing()
-        #raylibpy.close_window()

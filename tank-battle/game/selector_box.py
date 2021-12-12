@@ -38,5 +38,12 @@ class Selectorbox():
         selector2.set_height(height2)
         self._selectors.append(selector2)
 
+        title = Actor()
+
+        position = Point(0, 50)
+        title.set_position(position)
+        title.set_image("pick", "color")
+        self._selectors.append(title)
+
     def get_selector_boxes(self):
         return self._selectors

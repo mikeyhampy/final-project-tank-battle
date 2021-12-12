@@ -1,6 +1,7 @@
 from game.actor import Actor
 from game.point import Point
 from game import constants
+import random
 
 class Wall():
     def __init__(self):
@@ -10,8 +11,11 @@ class Wall():
         """
         Method will set all the wall actors and will save them in a list
         """
+
         wall_x = (constants.MAX_X - constants.WALL_WIDTH) / 2
         wall_y = constants.MAX_Y - constants.WALL_HEIGHT
+        wall_y2 = constants.MAX_Y - 150
+        wall_y = random.randint(wall_y, wall_y2)
         wall = Actor()
         position = Point(wall_x, wall_y)
         wall.set_position(position)

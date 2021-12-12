@@ -17,7 +17,7 @@ from game.audio_service import AudioService
 from game.colors import Colors
 from game.selector_box import Selectorbox
 from game.wall import Wall
-from game.ball import Ball
+from game.lives import Lives
 from game.tank import Tank
 from game.barrel import Barrel
 from game.choose_color import Choosecolor
@@ -76,9 +76,9 @@ def main():
         physics_service = PhysicsService()
         audio_service = AudioService()
 
-        choose_colors = Choosecolor()
+        choose_colors = Choosecolor(audio_service)
         move_actors_action = MoveActorsAction()
-        control_actors_action = ControlActorsAction(input_service)
+        control_actors_action = ControlActorsAction(input_service, audio_service)
         draw_actors_action = DrawActorsAction(output_service)
         handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
 
@@ -90,10 +90,11 @@ def main():
 
         # Start the game run once
         if open_window_loop == 0:
-            output_service.open_window("Tank Batter")
-            # audio_service.start_audio()
+            output_service.open_window("Tank Battle")
+            audio_service.start_audio()
             open_window_loop = 1
-
+            audio_service.play_sound(constants.SOUND_TOGGLE)
+            audio_service.play_sound(constants.SOUND_TOGGLE)
         """
         Set up game
         """
@@ -108,11 +109,14 @@ def main():
         wall.set_walls()
         cast["walls"] = wall.get_walls()
         
+        cast["lives1"] = []
+        cast["lives2"] = []
+        lives = Lives()
+        lives.set_lives()
+        cast["lives1"] = lives.get_lives1()
+        cast["lives2"] = lives.get_lives2()  
+
         cast["balls"] = []
-        # TODO: Create a ball here and add it to the list
-        # ball = Ball()
-        # ball.set_ball()
-        # cast["balls"] = ball.get_ball()
 
         cast["barrel"] = []
         # barrel actor
@@ -141,8 +145,8 @@ def main():
         audio_service = AudioService()
 
         move_actors_action = MoveActorsAction()
-        handle_off_screen_action = HandleOffScreenAction()
-        control_actors_action = ControlActorsAction(input_service)
+        handle_off_screen_action = HandleOffScreenAction(audio_service)
+        control_actors_action = ControlActorsAction(input_service, audio_service)
         draw_actors_action = DrawActorsAction(output_service)
         handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
         check_end = CheckEnd(audio_service)

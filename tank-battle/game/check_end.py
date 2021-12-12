@@ -15,30 +15,13 @@ class CheckEnd(Action):
         self._sound = raylibpy
 
     def execute(self, cast):
-        # balls = cast["balls"]
-        # ball = balls[0]
-        # y = ball._position.get_y()
-        # wall = cast["walls"]
+        player1 = cast["lives1"]
+        player2 =cast["lives2"]
 
-        # if y > constants.MAX_Y:
-        #     balls.remove(ball)
-        #     self._audio_service.play_sound(constants.SOUND_OVER)
-        #     self._end_game = True
-        #     self._game_message = "GAME OVER!"
-        #     self._sound = constants.SOUND_OVER
-        #     self._audio_service.stop_audio(constants.SOUND_START)
-        if constants.RIGHT_PLAYER_LOSES:
+        if len(player1) == 0:
             self._end_game = True
             self._game_message = "PLAYER 2 WINS!!!"
 
-        if constants.LEFT_PLAYER_LOSES:
+        if len(player2) == 0:
             self._end_game = True
             self._game_message = "PLAYER 1 WINS!!!"
-        # if len(wall) == 0:
-        #     self._audio_service.play_sound(constants.SOUND_VICTORY)
-        #     self._end_game = True
-        #     self._game_message = "YOU WIN!"
-        #     self._sound = constants.SOUND_VICTORY
-        #     self._audio_service.stop_audio(constants.SOUND_START)
-        # else:
-        #     self._sound = constants.SOUND_START

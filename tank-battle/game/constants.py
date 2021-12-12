@@ -5,7 +5,7 @@ MAX_Y = 600
 FRAME_RATE = 30
 
 DEFAULT_SQUARE_SIZE = 20
-DEFAULT_FONT_SIZE = 20
+DEFAULT_FONT_SIZE = 72
 DEFAULT_TEXT_OFFSET = 4
 
 TANK_TOP_WIDTH = 65
@@ -30,7 +30,7 @@ TANK_ANGLE2 = 360
 
 FULL_TANK_WIDTH = 144
 FULL_TANK_HEIGHT = 45
-SELECTOR_Y = 200
+SELECTOR_Y = 300
 SELECTOR_X = 92
 SELECTOR_LINE_WIDTH = 4
 
@@ -45,10 +45,13 @@ ASSETS_PATH = os.path.join(os.getcwd(), 'tank-battle', 'assets')
 IMAGE_BACKGROUND = os.path.join(os.getcwd(), "./tank-battle/assets/background.png")
 
 SOUND_START = os.path.join(ASSETS_PATH, "start.wav")
-SOUND_BOUNCE = os.path.join(ASSETS_PATH, "boing.wav")
 SOUND_OVER = os.path.join(ASSETS_PATH, "over.wav")
 SOUND_VICTORY = os.path.join(ASSETS_PATH, "ff_vii_victory.wav")
-
+SOUND_RELOAD = os.path.join(ASSETS_PATH, "reload.wav")
+SOUND_FIRE = os.path.join(ASSETS_PATH, "fire_tank.wav")
+SOUND_THUD = os.path.join(ASSETS_PATH, "miss_tank.wav")
+SOUND_EXPLOSION = os.path.join(ASSETS_PATH, "explode.wav")
+SOUND_TOGGLE = os.path.join(ASSETS_PATH, "menu-toggle.wav")
 
 
 TANK_X1 = (MAX_X * (1 / 2)) + (MAX_X * (1 / 4))

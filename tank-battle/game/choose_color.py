@@ -11,13 +11,14 @@ class Choosecolor(Action):
     Attributes:
     _input_service (InputService): An instance of InputService.
     """
-    def __init__(self):
+    def __init__(self, audio_service):
         """The class constructor.
         
         Args:
             input_service (InputService): An instance of InputService.
         """
         self._color_index = [[0, 1, 2], [3, 4, 5]]
+        self._audio_service = audio_service
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -67,14 +68,7 @@ class Choosecolor(Action):
         color_x2 = color_position2.get_x()
         color_y2 = color_position2.get_y()
 
-        '''
-        constants.SELECTOR_LINE_WIDTH
-        x = constants.SELECTOR_X - (line_width * 2)
-        y = constants.SELECTOR_Y - (line_width * 2)
-
-                x -= (line_width * 2)
-                y -= (line_width * 2)
-        '''
+        #move boxes
         selector_p1._color_index_x = selector_index_x1
         selector_p2._color_index_x = selector_index_x2
         selector_p1._color_index_y = selector_index_y1
@@ -85,3 +79,9 @@ class Choosecolor(Action):
 
         position2 = Point(color_x2 - (constants.SELECTOR_LINE_WIDTH * 2), color_y2 - (constants.SELECTOR_LINE_WIDTH * 2))
         selector_p2.set_position(position2)
+
+        """
+        PLAY SOUND
+        """
+        if dx1 != 0 or dy1 != 0 or dx2 != 0 or dy2 !=0:
+            self._audio_service.play_sound(constants.SOUND_TOGGLE)

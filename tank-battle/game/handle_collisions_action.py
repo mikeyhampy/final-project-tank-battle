@@ -38,94 +38,39 @@ class HandleCollisionsAction(Action):
                 
             # set variables to check collisions in game
             balls = cast["balls"]
-            barrel_right = cast["barrel"][0]
-            barrel_left = cast["barrel"][1]        
+        
             tank_right = cast["tank"][0]
             tank_left = cast["tank"][1]
             wall = cast["walls"][0]
-            # for ball in balls:
-            #     if self._physics_service.is_collision(ball, tank):
-            #         if self.num_tank_col > 0:
-            #             self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-            #         self._audio_service.play_sound(constants.SOUND_BOUNCE)
-            #         ball._velocity._y = ball._velocity._y * -1
-            #         self.num_tank_col = 1
+            lives1 = cast["lives1"]
+            lives2 = cast["lives2"]
 
-            # check ball and wall collisions
             for ball in balls:
                 if self._physics_service.is_collision(ball, wall):
-                    # if self.num_brick_col > 0:
-                    #     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                    # self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                    # ball._velocity._y = ball._velocity._y * -1
+                    self._audio_service.play_sound(constants.SOUND_THUD)
                     balls.remove(ball)
-                    # self.num_brick_col = 1
-
-
-                    '''
-            # check ball and barrel right collisions
-            for ball in balls:
-                if ball._velocity._y < 0:
-                    if self._physics_service.is_collision(ball, barrel_right):
-                    # if self.num_brick_col > 0:
-                    #     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                    # self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                    # ball._velocity._y = ball._velocity._y * -1
-                        balls.remove(ball)
-                    # self.num_brick_col = 1'''
 
                     # check ball and tank right collisions
             for ball in balls:
                 if self._physics_service.is_collision(ball, tank_right):
-                    # if self.num_brick_col > 0:
-                    #     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                    # self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                    # ball._velocity._y = ball._velocity._y * -1
+                    self._audio_service.play_sound(constants.SOUND_EXPLOSION)
                     balls.remove(ball)
-                    constants.RIGHT_PLAYER_LOSES = True
-                    x2 = ball.get_position().get_x()
-                    y2 = ball.get_position().get_y()
-                    width2 = ball.get_width()
-                    height2 = ball.get_height()
-                    x = tank_right.get_position().get_x()
-                    y = tank_right.get_position().get_y()
-                    width = tank_right.get_width()
-                    height = tank_right.get_height()
-                    print(f'Ball position: ({ball._position._x}, {ball._position._x})   ({width2}, {height2})')
-                    print(f'tank position: ({tank_right._position._x}, {tank_right._position._x})   ({width}, {height})')
-                    # self.num_brick_col = 1
+                    length1 = len(lives1)
+                    i1 = 0
+                    for live1 in lives1:
+                        if i1 == (length1 - 1):
+                            lives1.remove(live1)
+                        i1 += 1
 
-
-
-                    '''
-            # check ball and barrel left collisions
-            for ball in balls:
-                if ball._velocity._y > 0:
-                    if self._physics_service.is_collision(ball, barrel_left):
-                    # if self.num_brick_col > 0:
-                    #     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                    # self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                    # ball._velocity._y = ball._velocity._y * -1
-                        balls.remove(ball)
-                    # self.num_brick_col = 1'''
 
             # check ball and tank left collisions
             for ball in balls:
                 if self._physics_service.is_collision(ball, tank_left):
-                    # if self.num_brick_col > 0:
-                    #     self._audio_service.stop_audio(constants.SOUND_BOUNCE)
-                    # self._audio_service.play_sound(constants.SOUND_BOUNCE)
-                    # ball._velocity._y = ball._velocity._y * -1
+                    self._audio_service.play_sound(constants.SOUND_EXPLOSION)
                     balls.remove(ball)
-                    constants.LEFT_PLAYER_LOSES = True
-                    # self.num_brick_col = 1
-                    x2 = ball.get_position().get_x()
-                    y2 = ball.get_position().get_y()
-                    width2 = ball.get_width()
-                    height2 = ball.get_height()
-                    x = tank_right.get_position().get_x()
-                    y = tank_right.get_position().get_y()
-                    width = tank_right.get_width()
-                    height = tank_right.get_height()
-                    print(f'Ball position: ({ball._position._x}, {ball._position._x})   ({width2}, {height2})')
-                    print(f'tank position: ({tank_right._position._x}, {tank_right._position._x})   ({width}, {height})')
+                    length2 = len(lives2)
+                    i2 = 0
+                    for live2 in lives2:
+                        if i2 == (length2 - 1):
+                            lives2.remove(live2)
+                        i2 += 1
