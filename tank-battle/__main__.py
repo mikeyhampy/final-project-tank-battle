@@ -2,6 +2,7 @@ import os
 os.environ['RAYLIB_BIN_PATH'] = r'../final-project-tank-battle/tank-battle'
 
 import random
+from time import sleep
 import raylibpy
 from game import constants
 from game.director import Director
@@ -45,6 +46,8 @@ def main():
     # check_end = CheckEnd(audio_service)
     open_window_loop = 0
     while(constants.KEEP_PLAYING):
+        if open_window_loop != 0:
+            sleep(.5)
         constants.KEEP_PLAYING = False
         constants.LEFT_PLAYER_LOSES = False
         constants.RIGHT_PLAYER_LOSES = False

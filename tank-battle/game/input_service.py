@@ -1,6 +1,8 @@
 import sys
 from game.point import Point
 import raylibpy
+from game.audio_service import AudioService
+from game import constants
 
 class InputService:
     """Detects player input. The responsibility of the class of objects is to detect player keypresses and translate them into a point representing a direction (or velocity).
@@ -28,6 +30,7 @@ class InputService:
         self._s = False
         self._a = False
         self._d = False
+        self.audio_service = AudioService()
         
     def get_direction(self):
         """Gets the selected direction based on the currently pressed keys.
@@ -109,6 +112,7 @@ class InputService:
             self._dx = 1
 
         if self.is_enter_pressed() or self.is_space_pressed():
+            self.audio_service.play_sound(constants.SOUND_TOGGLE)
             return True
         else:
             return False
@@ -151,6 +155,7 @@ class InputService:
             # select (enter)
             if self.is_enter_pressed():
                 self._enter = True
+                self.audio_service.play_sound(constants.SOUND_TOGGLE)
 
         direction = Point(dx, dy)
         return direction, self._enter
@@ -192,6 +197,7 @@ class InputService:
             # select (space)
             if self.is_space_pressed():
                 self._space = True
+                self.audio_service.play_sound(constants.SOUND_TOGGLE)
 
         direction = Point(dx, dy)
         return direction, self._space
