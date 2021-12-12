@@ -31,26 +31,10 @@ from game.end_game import EndGame
 
 def main():
     # Create the script {key: tag, value: list}
-    # script = {}
 
-    # input_service = InputService()
-    # output_service = OutputService()
-    # physics_service = PhysicsService()
-    # audio_service = AudioService()
-
-    # move_actors_action = MoveActorsAction()
-    # handle_off_screen_action = HandleOffScreenAction()
-    # control_actors_action = ControlActorsAction(input_service)
-    # draw_actors_action = DrawActorsAction(output_service)
-    # handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
-    # check_end = CheckEnd(audio_service)
     open_window_loop = 0
     while(constants.KEEP_PLAYING):
-        if open_window_loop != 0:
-            sleep(.5)
         constants.KEEP_PLAYING = False
-        constants.LEFT_PLAYER_LOSES = False
-        constants.RIGHT_PLAYER_LOSES = False
         constants.TANK_ANGLE = 180
         constants.TANK_ANGLE2 = 360
         constants.BALL_CHANGE_X1 = 0
@@ -84,6 +68,8 @@ def main():
         control_actors_action = ControlActorsAction(input_service, audio_service)
         draw_actors_action = DrawActorsAction(output_service)
         handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
+        handle_off_screen_action = HandleOffScreenAction(audio_service)
+        check_end = CheckEnd(audio_service)
 
         # TODO: Create additional actions here and add them to the script
 
@@ -98,11 +84,14 @@ def main():
             open_window_loop = 1
         audio_service.play_sound(constants.SOUND_TOGGLE)
         audio_service.play_sound(constants.SOUND_TOGGLE)
+
         """
         Set up game
         """
         director = Director(cast, script)
         director.pre_game()
+
+        
         # create the cast {key: tag, value: list}
         cast = {}
 
@@ -138,32 +127,14 @@ def main():
         end_game.set_end_game()
         cast["end_game"] = end_game.get_end_game()
 
-
         # Create the script {key: tag, value: list}
         script = {}
 
-        input_service = InputService()
-        output_service = OutputService()
-        physics_service = PhysicsService()
-        audio_service = AudioService()
-
-        move_actors_action = MoveActorsAction()
-        handle_off_screen_action = HandleOffScreenAction(audio_service)
-        control_actors_action = ControlActorsAction(input_service, audio_service)
-        draw_actors_action = DrawActorsAction(output_service)
-        handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
-        check_end = CheckEnd(audio_service)
-
         # TODO: Create additional actions here and add them to the script
-
         script["input"] = [control_actors_action]
         script["update"] = [move_actors_action, handle_off_screen_action, handle_collisions_action]
         script["output"] = [check_end, draw_actors_action]
-
-
-
-
-        
+   
         """
         Play game
         """
@@ -171,16 +142,8 @@ def main():
         director = Director(cast, script)
         director.start_game()
 
-        #stop audio
-        # audio_service.stop_audio(check_end._sound)
-        # if handle_collisions_action.num_wall_col > 0:
-        #     audio_service.stop_audio(constants.SOUND_BOUNCE)
-        # if handle_collisions_action.num_tank_col > 0:
-        #     audio_service.stop_audio(constants.SOUND_BOUNCE)
         output_service.flush_buffer()
 
-    #close game run once
-    # audio_service.close_audio()
     raylibpy.close_window()
 
 if __name__ == "__main__":

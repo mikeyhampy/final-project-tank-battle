@@ -113,6 +113,8 @@ class InputService:
 
         if self.is_enter_pressed() or self.is_space_pressed():
             self.audio_service.play_sound(constants.SOUND_TOGGLE)
+            self._space = False
+            self._enter = False
             return True
         else:
             return False

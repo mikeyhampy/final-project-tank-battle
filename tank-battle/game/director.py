@@ -76,6 +76,7 @@ class Director:
             if enter and select == -1:
                 if_end_game = False
                 constants.KEEP_PLAYING = True
+                sleep(1)
             elif enter and select == 1:
                 if_end_game = False
 
