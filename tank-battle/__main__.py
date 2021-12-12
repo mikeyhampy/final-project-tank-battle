@@ -84,8 +84,8 @@ def main():
 
         # TODO: Create additional actions here and add them to the script
 
-        script["input"] = [control_actors_action] #control_actors_action
-        script["update"] = [choose_colors, handle_collisions_action] #choose_colors
+        script["input"] = [control_actors_action]
+        script["update"] = [choose_colors, handle_collisions_action]
         script["output"] = [draw_actors_action]
 
         # Start the game run once

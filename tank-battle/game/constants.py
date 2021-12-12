@@ -30,12 +30,10 @@ TANK_ANGLE2 = 360
 
 FULL_TANK_WIDTH = 144
 FULL_TANK_HEIGHT = 45
-SELECTOR_Y = 120
+SELECTOR_Y = 200
 SELECTOR_X = 92
 SELECTOR_LINE_WIDTH = 4
 
-ASSETS_PATH = os.path.join(os.getcwd(), 'tank-battle', 'assets')
-FULL1_TANK_FILE_PATH = "./tank-battle/assets/full1_"
 RED = "red"
 GRAY = "gray"
 BLUE = "blue"
@@ -43,10 +41,8 @@ ORANGE = "orange"
 YELLOW = "yellow"
 GREEN = "green"
 
-PLAYER_TANK_COLOR1 = ""
-PLAYER_TANK_COLOR2 = ""
-
-#IMAGE_BACKGROUND = os.path.join(os.getcwd(), "./tank-battle/assets/background.png")
+ASSETS_PATH = os.path.join(os.getcwd(), 'tank-battle', 'assets')
+IMAGE_BACKGROUND = os.path.join(os.getcwd(), "./tank-battle/assets/background.png")
 
 SOUND_START = os.path.join(ASSETS_PATH, "start.wav")
 SOUND_BOUNCE = os.path.join(ASSETS_PATH, "boing.wav")
@@ -57,7 +53,7 @@ SOUND_VICTORY = os.path.join(ASSETS_PATH, "ff_vii_victory.wav")
 
 TANK_X1 = (MAX_X * (1 / 2)) + (MAX_X * (1 / 4))
 TANK_X2 = (MAX_X * (1 / 2)) - (MAX_X * (1 / 4)) - TANK_WIDTH
-TANK_Y = MAX_Y - TANK_HEIGHT - 20
+TANK_Y = MAX_Y - TANK_HEIGHT
 
 BARREL_X1 = TANK_X1 + (TANK_WIDTH - TANK_FRONT_WIDTH)
 BARREL_X2 = TANK_X2 + (TANK_FRONT_WIDTH)
@@ -70,13 +66,13 @@ BALL1_POS = BARREL_X1 + (BALL_WIDTH * 1.4)
 BALL2_POS = BARREL_X2 - (BALL_WIDTH * 1.4)
 BALL_Y = TANK_Y + (BARREL_HEIGHT) - (BALL_HEIGHT * 1.4)
 BALL_Y1 = TANK_Y + (BARREL_HEIGHT) - (BALL_HEIGHT * 2.1)
+
+
+
 BALL_CHANGE_X1 = 0
 BALL_CHANGE_X2 = 0
-
-
-
-
+PLAYER_TANK_COLOR1 = ""
+PLAYER_TANK_COLOR2 = ""
 KEEP_PLAYING = True
-
 RIGHT_PLAYER_LOSES = False
 LEFT_PLAYER_LOSES = False

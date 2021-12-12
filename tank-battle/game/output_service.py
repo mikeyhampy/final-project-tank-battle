@@ -36,6 +36,9 @@ class OutputService:
         """ 
         raylibpy.begin_drawing()
         raylibpy.clear_background(raylibpy.BLACK)
+        #vector = raylibpy.Vector2(0, 0)
+        #raylibpy.draw_texture(constants.IMAGE_BACKGROUND, 0, 0, raylibpy.WHITE)
+        #raylibpy.draw_texture_ex(constants.IMAGE_BACKGROUND, vector, 0, 1, raylibpy.WHITE)
 
     def draw_box_ex(self, rectangle, width_of_line, color):
         """
