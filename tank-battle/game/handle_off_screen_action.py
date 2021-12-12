@@ -35,10 +35,18 @@ class HandleOffScreenAction(Action):
 
         tank_x2 = tank2._position.get_x()
 
-        #tank won't go off screen
+        # tank won't go off screen
         if(tank_x2 < 0):
             tank2._position._x = 0
             barrel2._position._x += 1
         if(tank_x1 > constants.MAX_X - constants.TANK_WIDTH):
             tank1._position._x = constants.MAX_X - constants.TANK_WIDTH
             barrel1._position._x += -1
+
+        # tank stays on its own side
+        if(tank_x2 > ((constants.MAX_X / 2) - constants.FULL_TANK_WIDTH - constants.WALL_WIDTH)):
+            tank2._position._x += -1
+            barrel2._position._x += -1   
+        if(tank_x1 < ((constants.MAX_X / 2) + constants.BARREL_WIDTH + constants.WALL_WIDTH)):
+            tank1._position._x += 1
+            barrel1._position._x += 1
