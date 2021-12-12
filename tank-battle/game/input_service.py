@@ -138,14 +138,14 @@ class InputService:
             if self.is_up_up():
                 self._up = True
             if self.is_up_pressed() and self._up:
-                dy = -2
+                dy = -1
                 self._up = False
             
             # choose down
             if self.is_down_up():
                 self._down = True
             if self.is_down_pressed() and self._down:
-                dy = 2
+                dy = 1
                 self._down = False
 
             # select (enter)
@@ -179,19 +179,19 @@ class InputService:
             if self.is_w_up():
                 self._w = True
             if self.is_w_pressed() and self._w:
-                dy = -2
+                dy = -1
                 self._w = False
             
             # choose s
             if self.is_s_up():
                 self._s = True
             if self.is_s_pressed() and self._s:
-                dy = 2
+                dy = 1
                 self._s = False
 
             # select (space)
             if self.is_space_pressed():
-                self._true = True
+                self._space = True
 
         direction = Point(dx, dy)
         return direction, self._space

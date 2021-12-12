@@ -29,10 +29,11 @@ class Director:
         
     def pre_game(self):
         """Starts the pre-game actions"""
-        while self._start_game:
+        while self._start_game and (constants.PLAYER_TANK_COLOR1 == "" or constants.PLAYER_TANK_COLOR1 == ""):
             self._cue_action("input")
             self._cue_action("update")
             self._cue_action("output")
+            constants
 
             if raylibpy.window_should_close():
                 self._start_game = False

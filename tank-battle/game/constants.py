@@ -32,7 +32,7 @@ FULL_TANK_WIDTH = 144
 FULL_TANK_HEIGHT = 45
 SELECTOR_Y = 120
 SELECTOR_X = 92
-SELECTOR_LINE_WIDTH = 0
+SELECTOR_LINE_WIDTH = 4
 
 FULL1_TANK_FILE_PATH = "./tank-battle/assets/full1_"
 RED = "red.png"
@@ -54,13 +54,22 @@ IMAGE_FULL1_YELLOW = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
 CHOICE_FILE_PATH = FULL1_TANK_FILE_PATH + GREEN
 IMAGE_FULL1_GREEN = os.path.join(os.getcwd(), CHOICE_FILE_PATH)
 
-IMAGE_BARREL1 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_blue.png")
-IMAGE_TANK1 = os.path.join(os.getcwd(), "./tank-battle/assets/tank1_blue.png")
+PLAYER_TANK_COLOR1 = ""
+PLAYER_TANK_COLOR2 = ""
+BARREL_COLOR = 'blue'
+
+ASSETS_PATH = os.path.join(os.getcwd(), 'tank-battle', 'assets')
+def get_image_path(filename):
+    return os.path.join(ASSETS_PATH, filename)
+IMAGE_BARREL1 = os.path.join(os.getcwd(), "./tank-battle/assets/", f'barrel_{BARREL_COLOR}.png')
 IMAGE_BARREL2 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_red.png")
+IMAGE_TANK1 = os.path.join(os.getcwd(), "./tank-battle/assets/tank1_blue.png")
 IMAGE_TANK2 = os.path.join(os.getcwd(), "./tank-battle/assets/tank2_red.png")
-IMAGE_BALL = os.path.join(os.getcwd(), "./tank-battle/assets/ball_red.png")
+IMAGE_BALL1 = os.path.join(os.getcwd(), "./tank-battle/assets/ball_blue.png")
+IMAGE_BALL2 = os.path.join(os.getcwd(), "./tank-battle/assets/ball_red.png")
 
 IMAGE_WALL = os.path.join(os.getcwd(), "./tank-battle/assets/wall.png")
+
 #IMAGE_BACKGROUND = os.path.join(os.getcwd(), "./tank-battle/assets/background.png")
 
 SOUND_START = os.path.join(os.getcwd(), "./tank-battle/assets/start.wav")

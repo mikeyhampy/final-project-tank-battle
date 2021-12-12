@@ -1,6 +1,7 @@
 from game.actor import Actor
 from game.point import Point
 from game import constants
+import raylibpy
 
 class Selectorbox():
     def __init__(self):
@@ -16,7 +17,7 @@ class Selectorbox():
         height1 = constants.FULL_TANK_HEIGHT + (line_width * 2)
         selector1 = Actor()
         selector1._box_line_width = constants.SELECTOR_LINE_WIDTH
-        selector1._colors_of_lines = "red"
+        selector1._colors_of_lines = raylibpy.RED
         position1 = Point(x1, y1)
         selector1.set_position(position1)
         selector1.set_width(width1)
@@ -30,7 +31,7 @@ class Selectorbox():
         height2 = constants.FULL_TANK_HEIGHT + line_width
         selector2 = Actor()
         selector2._box_line_width = constants.SELECTOR_LINE_WIDTH
-        selector2._colors_of_lines = "blue"
+        selector2._colors_of_lines = raylibpy.BLUE
         position2 = Point(x2, y2)
         selector2.set_position(position2)
         selector2.set_width(width2)

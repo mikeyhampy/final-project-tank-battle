@@ -75,6 +75,11 @@ class Choosecolor(Action):
                 x -= (line_width * 2)
                 y -= (line_width * 2)
         '''
+        selector_p1._color_index_x = selector_index_x1
+        selector_p2._color_index_x = selector_index_x2
+        selector_p1._color_index_y = selector_index_y1
+        selector_p2._color_index_y = selector_index_y2
+
         position1 = Point(color_x1 - (constants.SELECTOR_LINE_WIDTH * 4), color_y1  - (constants.SELECTOR_LINE_WIDTH * 4))
         selector_p1.set_position(position1)
 

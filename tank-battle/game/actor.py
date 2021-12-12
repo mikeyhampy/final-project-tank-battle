@@ -37,6 +37,7 @@ class Actor:
         self._color_selected = False
         self._color_index_x = 0
         self._color_index_y = 0
+        self._color_tank = "none"
 
     def get_width(self):
         return self._width

@@ -37,17 +37,23 @@ class Colors():
                 if j == 0:
                     if i == 0:
                         color_of_tank = constants.IMAGE_FULL1_RED
+                        colors._color_tank = constants.RED
                     elif i == 1:
                         color_of_tank = constants.IMAGE_FULL1_GRAY
+                        colors._color_tank = constants.GRAY
                     elif i == 2:
                         color_of_tank = constants.IMAGE_FULL1_BLUE
+                        colors._color_tank = constants.BLUE
                 if j == 1:
                     if i == 0:
                         color_of_tank = constants.IMAGE_FULL1_ORANGE
+                        colors._color_tank = constants.ORANGE
                     elif i == 1:
                         color_of_tank = constants.IMAGE_FULL1_YELLOW
+                        colors._color_tank = constants.YELLOW
                     elif i == 2:
                         color_of_tank = constants.IMAGE_FULL1_GREEN
+                        colors._color_tank = constants.GREEN
                         
                 colors.set_image(color_of_tank)
                 self._tank_colors.append(colors)

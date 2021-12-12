@@ -37,15 +37,13 @@ class OutputService:
         raylibpy.begin_drawing()
         raylibpy.clear_background(raylibpy.BLACK)
 
-    def draw_box(self, x, y, width, height, if_tank):
+    def draw_box_ex(self, rectangle, width_of_line, color):
         """
         Draws at rectangular box with the provided specifications.
         """
-        if if_tank:
-            color = raylibpy.RED
-        else:
-            color = raylibpy.BLUE
-        raylibpy.draw_rectangle(x, y, width, height, color)
+        if color == None:
+            color = raylibpy.BLACK
+        raylibpy.draw_rectangle_lines_ex(rectangle, width_of_line, color)
 
     def draw_text(self, x, y, text, text_color):
         """
@@ -81,6 +79,8 @@ class OutputService:
         """ 
         position = actor.get_position()
         angle = actor._angle
+        color_of_line = actor._colors_of_lines
+        width_of_line = actor._box_line_width
         scale = actor._scale
         x = position.get_x()
         y = position.get_y()
@@ -88,7 +88,7 @@ class OutputService:
         height = actor.get_height()
 
         vc = raylibpy.Vector2(width / 2, 0)
-        tangle = raylibpy.Rectangle(x, y, width, height)
+        rectangle = raylibpy.Rectangle(x, y, width, height)
 
         if actor.has_image():
             image = actor.get_image()
@@ -98,7 +98,7 @@ class OutputService:
             text = actor.get_text()
             self.draw_text(x, y, text, self._color_number)
         elif width > 0 and height > 0:
-            self.draw_box(x, y, width, height, if_tank)
+            self.draw_box_ex(rectangle, width_of_line, color_of_line)
         
     def draw_actors(self, actors, color_number, if_tank):
         """Renders the given list of actors on the screen.

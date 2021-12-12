@@ -52,21 +52,23 @@ def main():
         constants.TANK_ANGLE2 = 360
         constants.BALL_CHANGE_X1 = 0
         constants.BALL_CHANGE_X2 = 0
-
+        constants.PLAYER_TANK_COLOR1 = ""
+        constants.PLAYER_TANK_COLOR2 = ""
         # create the cast {key: tag, value: list}
         cast = {}
         cast["colors"] = []
         # TODO: color options for the tanks
         colors = Colors()
-        colors.get_colors()
-        cast["colors"] = colors.set_colors()
+        colors.set_colors()
+        cast["colors"] = colors.get_colors()
 
         cast["selector"] = []
-        # selector = Selectorbox()
-        # selector.get_selector_boxes()
-        # cast["selector"] = selector.set_selector_boxes()
+        selector = Selectorbox()
+        selector.set_selector_boxes()
+        cast["selector"] = selector.get_selector_boxes()
 
         # Create the script {key: tag, value: list}
+
         script = {}
 
         input_service = InputService()
@@ -74,16 +76,16 @@ def main():
         physics_service = PhysicsService()
         audio_service = AudioService()
 
+        choose_colors = Choosecolor()
         move_actors_action = MoveActorsAction()
-        handle_off_screen_action = HandleOffScreenAction()
         control_actors_action = ControlActorsAction(input_service)
         draw_actors_action = DrawActorsAction(output_service)
         handle_collisions_action = HandleCollisionsAction(physics_service, audio_service)
 
         # TODO: Create additional actions here and add them to the script
 
-        script["input"] = [] #control_actors_action
-        script["update"] = [] #choose_colors
+        script["input"] = [control_actors_action] #control_actors_action
+        script["update"] = [choose_colors, handle_collisions_action] #choose_colors
         script["output"] = [draw_actors_action]
 
         # Start the game run once
