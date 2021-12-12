@@ -93,8 +93,8 @@ def main():
             output_service.open_window("Tank Battle")
             audio_service.start_audio()
             open_window_loop = 1
-            audio_service.play_sound(constants.SOUND_TOGGLE)
-            audio_service.play_sound(constants.SOUND_TOGGLE)
+        audio_service.play_sound(constants.SOUND_TOGGLE)
+        audio_service.play_sound(constants.SOUND_TOGGLE)
         """
         Set up game
         """
