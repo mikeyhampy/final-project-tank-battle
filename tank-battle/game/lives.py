@@ -11,7 +11,7 @@ class Lives():
         #right tank
         i = 0
         difference = 41
-        x1 = 664
+        x1 = constants.MAX_X - 20 - 36
         x2 = 20
         while(i < 3):
             lives1 = Actor()
@@ -28,7 +28,7 @@ class Lives():
             lives2.set_position(position2)
             lives2.set_image("full2", constants.PLAYER_TANK_COLOR2)
             self._lives2.append(lives2)
-            x1 += difference
+            x1 -= difference
             x2 += difference
             i += 1
 
