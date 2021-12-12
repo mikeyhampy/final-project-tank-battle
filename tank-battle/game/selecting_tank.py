@@ -1,7 +1,8 @@
 import os
 from game import constants
 
-def change_path():
+def change_path(object, color):
+    return constants.ASSETS_PATH / f'{object}_{color}.png'
     
     constants.IMAGE_BARREL1 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_blue.png")
     constants.IMAGE_BARREL2 = os.path.join(os.getcwd(), "./tank-battle/assets/barrel_red.png")

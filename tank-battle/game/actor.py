@@ -1,3 +1,4 @@
+import os
 from game import constants
 from game.point import Point
 
@@ -37,7 +38,7 @@ class Actor:
         self._color_selected = False
         self._color_index_x = 0
         self._color_index_y = 0
-        self._color_tank = "none"
+        self._color_actor = ""
 
     def get_width(self):
         return self._width
@@ -54,8 +55,9 @@ class Actor:
     def get_image(self):
         return self._image
     
-    def set_image(self, image):
-        self._image = image
+    def set_image(self, object, color):
+        self._image = os.path.join(constants.ASSETS_PATH, f'{object}_{color}.png')
+       
 
     def get_left_edge(self):
         return self._position.get_x()

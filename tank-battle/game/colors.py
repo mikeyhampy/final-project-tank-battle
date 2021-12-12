@@ -36,26 +36,26 @@ class Colors():
                 # make the tanks difforent colors and set image
                 if j == 0:
                     if i == 0:
-                        color_of_tank = constants.IMAGE_FULL1_RED
-                        colors._color_tank = constants.RED
+                        #color_of_tank = constants.IMAGE_FULL1_RED
+                        colors._color_actor = constants.RED
                     elif i == 1:
-                        color_of_tank = constants.IMAGE_FULL1_GRAY
-                        colors._color_tank = constants.GRAY
+                        #color_of_tank = constants.IMAGE_FULL1_GRAY
+                        colors._color_actor = constants.GRAY
                     elif i == 2:
-                        color_of_tank = constants.IMAGE_FULL1_BLUE
-                        colors._color_tank = constants.BLUE
+                        #color_of_tank = constants.IMAGE_FULL1_BLUE
+                        colors._color_actor = constants.BLUE
                 if j == 1:
                     if i == 0:
-                        color_of_tank = constants.IMAGE_FULL1_ORANGE
-                        colors._color_tank = constants.ORANGE
+                        #color_of_tank = constants.IMAGE_FULL1_ORANGE
+                        colors._color_actor = constants.ORANGE
                     elif i == 1:
-                        color_of_tank = constants.IMAGE_FULL1_YELLOW
-                        colors._color_tank = constants.YELLOW
+                        #color_of_tank = constants.IMAGE_FULL1_YELLOW
+                        colors._color_actor = constants.YELLOW
                     elif i == 2:
-                        color_of_tank = constants.IMAGE_FULL1_GREEN
-                        colors._color_tank = constants.GREEN
+                        #color_of_tank = constants.IMAGE_FULL1_GREEN
+                        colors._color_actor = constants.GREEN
                         
-                colors.set_image(color_of_tank)
+                colors.set_image("full1", colors._color_actor)
                 self._tank_colors.append(colors)
 
                 # update position and i (x_pos) looper

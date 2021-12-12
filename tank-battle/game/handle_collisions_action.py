@@ -28,12 +28,12 @@ class HandleCollisionsAction(Action):
             if selector_p1._color_selected and selector_p2._color_selected:
                 for tank_color in tank_colors:
                     if self._physics_service.is_collision(tank_color, selector_p1):
-                        selector_p1._color_tank = tank_color._color_tank
-                        constants.PLAYER_TANK_COLOR1 = tank_color._color_tank
-                        
+                        selector_p1._color_tank = tank_color._color_actor
+                        constants.PLAYER_TANK_COLOR1 = tank_color._color_actor
+
                     if self._physics_service.is_collision(tank_color, selector_p2):
-                        selector_p2._color_tank = tank_color._color_tank
-                        constants.PLAYER_TANK_COLOR2 = tank_color._color_tank
+                        selector_p2._color_tank = tank_color._color_actor
+                        constants.PLAYER_TANK_COLOR2 = tank_color._color_actor
         else:
                 
             # set variables to check collisions in game

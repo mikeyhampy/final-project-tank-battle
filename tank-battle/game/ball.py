@@ -30,7 +30,7 @@ class Ball():
         ball.set_velocity(velocity)
         ball.set_width(constants.BALL_WIDTH)
         ball.set_height(constants.BALL_HEIGHT)
-        ball.set_image(constants.IMAGE_BALL1)
+        ball.set_image("ball", constants.PLAYER_TANK_COLOR1)
         self._balls.append(ball)
 
     def set_ball2(self):
@@ -50,7 +50,7 @@ class Ball():
         ball2.set_velocity(velocity)
         ball2.set_width(constants.BALL_WIDTH)
         ball2.set_height(constants.BALL_HEIGHT)
-        ball2.set_image(constants.IMAGE_BALL2)
+        ball2.set_image("ball", constants.PLAYER_TANK_COLOR2)
         self._balls.append(ball2)
 
     def get_ball(self):

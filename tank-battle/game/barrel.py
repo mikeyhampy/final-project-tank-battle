@@ -14,7 +14,7 @@ class Barrel():
         barrel1.set_position(position)
         barrel1.set_width(constants.TANK_WIDTH)
         barrel1.set_height(constants.TANK_HEIGHT)
-        barrel1.set_image(constants.IMAGE_BARREL1)
+        barrel1.set_image("barrel", constants.PLAYER_TANK_COLOR1)
         self._barrels.append(barrel1)
 
         #left barrel p2
@@ -24,7 +24,7 @@ class Barrel():
         barrel2.set_position(position)
         barrel2.set_width(constants.TANK_WIDTH)
         barrel2.set_height(constants.TANK_HEIGHT)
-        barrel2.set_image(constants.IMAGE_BARREL2)
+        barrel2.set_image("barrel", constants.PLAYER_TANK_COLOR2)
         self._barrels.append(barrel2)
 
     def get_barrel(self):

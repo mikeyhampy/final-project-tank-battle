@@ -14,7 +14,7 @@ class Tank():
         tank1.set_position(position)
         tank1.set_width(constants.TANK_WIDTH)
         tank1.set_height(constants.TANK_HEIGHT)
-        tank1.set_image(constants.IMAGE_TANK1)
+        tank1.set_image("tank1", constants.PLAYER_TANK_COLOR1)
         self._tanks.append(tank1)
 
         #left tank
@@ -24,7 +24,7 @@ class Tank():
         tank2.set_position(position)
         tank2.set_width(constants.TANK_WIDTH)
         tank2.set_height(constants.TANK_HEIGHT)
-        tank2.set_image(constants.IMAGE_TANK2)
+        tank2.set_image("tank2", constants.PLAYER_TANK_COLOR2)
         self._tanks.append(tank2)
 
     def get_tank(self):
