@@ -45,8 +45,6 @@ ASSETS_PATH = os.path.join(os.getcwd(), 'tank-battle', 'assets')
 IMAGE_BACKGROUND = os.path.join(os.getcwd(), "./tank-battle/assets/background.png")
 
 SOUND_START = os.path.join(ASSETS_PATH, "start.wav")
-SOUND_OVER = os.path.join(ASSETS_PATH, "over.wav")
-SOUND_VICTORY = os.path.join(ASSETS_PATH, "ff_vii_victory.wav")
 SOUND_RELOAD = os.path.join(ASSETS_PATH, "reload.wav")
 SOUND_FIRE = os.path.join(ASSETS_PATH, "fire_tank.wav")
 SOUND_THUD = os.path.join(ASSETS_PATH, "miss_tank.wav")
