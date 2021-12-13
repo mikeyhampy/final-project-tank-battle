@@ -26,7 +26,7 @@ class HandleOffScreenAction(Action):
                 balls.remove(ball)
             
             # hit ground
-            if y >= constants.MAX_Y:
+            elif y > constants.MAX_Y + constants.BALL_WIDTH:
                 balls.remove(ball)
                 self._audio_service.play_sound(constants.SOUND_THUD)
 

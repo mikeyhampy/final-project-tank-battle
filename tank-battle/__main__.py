@@ -2,12 +2,9 @@ import os
 os.environ['RAYLIB_BIN_PATH'] = r'../final-project-tank-battle/tank-battle'
 
 import random
-from time import sleep
 import raylibpy
 from game import constants
 from game.director import Director
-from game.actor import Actor
-from game.point import Point
 from game.draw_actors_action import DrawActorsAction
 from game.input_service import InputService
 from game.output_service import OutputService

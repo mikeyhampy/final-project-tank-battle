@@ -54,6 +54,7 @@ class Director:
 
         over_win = self._script["output"][0]._game_message
         end_game_message = self._cast["end_game"]
+        sleep(.5)
         while if_end_game:
             #make end of game message
             end_game_message[2].set_text("Play again?")
