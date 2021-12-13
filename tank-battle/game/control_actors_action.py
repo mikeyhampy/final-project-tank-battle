@@ -60,7 +60,6 @@ class ControlActorsAction(Action):
                 
             if fire and self.fire_timer > 35:
                 ball = Ball()
-                ball._tank_moved1 += tank1._velocity._x
                 ball.angle1 += constants.TANK_ANGLE
                 ball.set_ball1()
                 cast["balls"].append(ball._balls[0])
@@ -80,7 +79,6 @@ class ControlActorsAction(Action):
                 self._audio_service.play_sound(constants.SOUND_RELOAD)
             if fire2 and self.fire_timer2 > 35:
                 ball = Ball()
-                ball._tank_moved2 += tank2._velocity._x
                 ball.angle2 += constants.TANK_ANGLE2
                 self._audio_service.play_sound(constants.SOUND_FIRE)
 

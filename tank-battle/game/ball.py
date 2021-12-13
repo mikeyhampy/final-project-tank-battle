@@ -10,8 +10,6 @@ class Ball():
         self._balls = []
         self.angle1 = (-180)
         self.angle2 = (-180)
-        self._tank_moved1 = 0        
-        self._tank_moved2 = 0
 
     def set_ball1(self):
         ball = Actor()
